@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#5d4201",
+                    "inverse-primary": "#775a19",
+                    "on-secondary-fixed-variant": "#4f4533",
+                    "on-tertiary": "#313030",
+                    "surface-tint": "#e9c176",
+                    "secondary-container": "#524835",
+                    "on-primary": "#412d00",
+                    "on-surface": "#e2e2e2",
+                    "inverse-surface": "#e2e2e2",
+                    "inverse-on-surface": "#303030",
+                    "secondary-fixed": "#f0e0c8",
+                    "primary-fixed": "#ffdea5",
+                    "on-surface-variant": "#d1c5b4",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary-fixed": "#261900",
+                    "on-secondary": "#382f1e",
+                    "background": "#131313",
+                    "surface-container-low": "#1b1b1b",
+                    "on-primary-container": "#4e3700",
+                    "on-tertiary-container": "#3b3b3b",
+                    "on-secondary-fixed": "#221b0b",
+                    "primary-fixed-dim": "#e9c176",
+                    "primary": "#e9c176",
+                    "surface-container-lowest": "#0e0e0e",
+                    "outline": "#9a8f80",
+                    "secondary-fixed-dim": "#d3c5ad",
+                    "surface-bright": "#393939",
+                    "tertiary": "#c8c6c5",
+                    "primary-container": "#c5a059",
+                    "surface-container": "#1f1f1f",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-background": "#e2e2e2",
+                    "surface-variant": "#353535",
+                    "on-error-container": "#ffdad6",
+                    "surface-dim": "#131313",
+                    "secondary": "#d3c5ad",
+                    "surface-container-high": "#2a2a2a",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "error-container": "#93000a",
+                    "outline-variant": "#4e4639",
+                    "surface-container-highest": "#353535",
+                    "surface": "#131313",
+                    "tertiary-container": "#a7a5a5",
+                    "on-secondary-container": "#c5b79f",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "section-gap": "120px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "80px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Montserrat"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-md": ["Montserrat"],
+                    "label-caps": ["Montserrat"],
+                    "headline-md": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        body {
+            background-color: #131313;
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .gold-border-subtle {
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .hero-gradient-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(19,19,19,1) 95%);
+        }
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5a059;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-primary/20">
+        <div class="flex justify-between items-center px-margin-mobile py-4 w-full max-w-container-max mx-auto md:px-margin-desktop">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary text-2xl">menu</span>
+                <span class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary md:text-headline-md">LUMIÈRE</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-caps text-label-caps text-primary font-bold hover:text-primary-fixed transition-colors duration-300" href="#services">SERVICES</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#portfolio">PORTFOLIO</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">ABOUT</a>
+            </div>
+            <button class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 tracking-widest active:scale-95 transition-transform">
+                BOOK NOW
+            </button>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover" data-alt="A high-fashion editorial shot of a woman with impeccably styled hair and glowing skin, set against a dark, moody background with subtle golden rim lighting. The atmosphere is sophisticated and expensive, using deep blacks and rich golden highlights to emphasize luxury. Soft focus on the background creates a premium bokeh effect that centers the viewer's attention on her serene and powerful expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCICqZ8qBmzVoApstyhFFfXiK-UQGaD8rk15lFMBw_xQF31nLu43bNrwsiPIuTlm7ZJYB8AizQ1DcbKwnET35AndcLCW4o5kod0l7vu9OYN0aVCpjLuyF0kER8XZbGgQra4QZpUlxLAQxkKIu41zKKFe34NghFm_PlSv2JLMR4Fp64Bbj0c7Fa13a4Vt-rLMKj6LvAvR90YHY0X4RSjU588LEivmU80FcrHCWUEE3XxAtUYBYFsMF55l53gLUvsAwFan9fgZq0DYLM"/>
+                <div class="hero-gradient-overlay absolute inset-0"></div>
+            </div>
+            <div class="relative z-10 text-center px-margin-mobile max-w-4xl">
+                <p class="font-label-caps text-label-caps text-primary mb-6 tracking-[0.4em]">EXCLUSIVIDADE &amp; REFINAMENTO</p>
+                <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg mb-8 text-on-surface">
+                    Sua Beleza, <br/>Nossa <span class="text-primary italic">Obra de Arte</span>
+                </h1>
+                <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                    <button class="bg-primary text-on-primary font-label-caps text-label-caps px-10 py-5 tracking-widest hover:bg-primary-fixed transition-all active:scale-95">
+                        AGENDAR EXPERIÊNCIA
+                    </button>
+                    <button class="gold-border-subtle text-primary font-label-caps text-label-caps px-10 py-5 tracking-widest hover:bg-primary/5 transition-all">
+                        DESCUBRA MAIS
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface mb-4">Nossos Serviços Premium</h2>
+                <div class="w-20 h-px bg-primary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Service 1 -->
+                <div class="group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A close-up shot of a professional hair stylist's hands working on a sleek, high-shine brunette hair transformation. The lighting is cinematic, highlighting the silky texture and golden undertones of the hair. The background is a minimalist black salon interior with warm golden accent lights that create an atmosphere of precision and elite beauty craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgzEPBbBd2x-uRqJUzvK5_AJL-QD8_Z5rdoEZlsocnv-DtfRYutHlEdg9l-e-KVDgxCfJULAIAGHvAJ97zSuQBiYWoRKNQ-3GpZjtjb1TaApWSobJ_mRtUSTB54IR_41xRLk5nCB5piV6oPOrQmf_ZjtahbWXmzWMFEgH-SdRvd9YbvGbrV8hXoxI_TvK7lb7w0SD2UT1j8ZQ9aNOiBJLH2xJSD5RsrOMbIBEmMBY_q-g52r9Pv65UgkHdKnsF7SMY8sPMsuY0aOI"/>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Hair Styling</h3>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-6">Cortes e colorações personalizadas que transcendem tendências, focando na sua identidade única.</p>
+                        <span class="font-label-caps text-[10px] text-primary tracking-widest">SABER MAIS —</span>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A luxurious facial treatment scene showing a client with flawless, dewy skin. A professional hand applies a gold-infused treatment oil. The lighting is soft and ethereal, capturing the reflective quality of the skincare products. The color palette is composed of deep blacks, soft skin tones, and bright gold accents, evoking a sense of calm, science, and extreme luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQ91yETzDM5lAaLBMC9DeClMR4plw2pzW7gFvqhJBWYNTEs1WTSpTgtHigFfg8EdFbq6TmGZGY8AAxWB3tA8dZvAg4dou9E3RUduAhD-U51lbt6GJzp_PcsikJfz7IKAT1q5ZUWKukghIQZv1kEEgda6rlmC1u822VOzqvDb9zHL5qLZQbEoTMJlsaYocgB2H6lMoUm7rrCQa4KDwE7Lb79Mj-6JrXCHkF_wqqFHSSI8gobCnmem87EJiDoluW1M-d9Eg_EJ8qqQ"/>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">face</span>
+                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Skin Care</h3>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-6">Protocolos avançados de revitalização com tecnologia de ponta e ativos de luxo para uma pele radiante.</p>
+                        <span class="font-label-caps text-[10px] text-primary tracking-widest">SABER MAIS —</span>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40">
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An artistic focus on high-end makeup application, showing a makeup artist applying fine details to a model's eye. The makeup features subtle metallic gold flakes and perfect contouring. The scene is shot in a high-contrast editorial style, with deep shadows and sharp, focused lighting that creates a feeling of meticulous artistry and glamour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9XtyRiLj1kdsYt7TCKNLC6DwHXRIJ7ZqWxG-CAsiZcyJCVmobYxnnij6H3Ro8jsepNhB_-yfq8OlyCxTTq4pQadGRC9V7Ap4sWvVZWpoChoJietUZCsw8bDSguODLTPdA-qZl4322YwyBXVwJI3skpv5lr_2K2h3qWkEuLJHUGDFOSOZZl_QrsV0piLZfgNQgOs54DX5Q5vbZFKUSAcPct_ouWPdRn2hlm92IL4uTOIW8U9kueHUkrrQaSDd6qRwTNnA0AJP2Pt4"/>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Makeup Artistry</h3>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md mb-6">Maquiagem editorial e social que ressalta seus traços mais belos com acabamento impecável.</p>
+                        <span class="font-label-caps text-[10px] text-primary tracking-widest">SABER MAIS —</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Gallery Section -->
+        <section class="bg-surface-container-lowest py-section-gap" id="portfolio">
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <p class="font-label-caps text-label-caps text-primary mb-4">NOSSO PORTFÓLIO</p>
+                        <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface">Resultados Impecáveis</h2>
+                    </div>
+                    <button class="text-primary font-label-caps text-label-caps border-b border-primary pb-2 hover:tracking-widest transition-all">VER TODOS OS LOOKS</button>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="space-y-4">
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="A professional fashion portrait of a woman with a sleek blonde bob, styled with high precision. The lighting is stark and dramatic, typical of high-end beauty magazines. The background is a flat obsidian black, allowing the light-colored hair and soft golden accessories to pop with maximum contrast and elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeEH8q5mo61pu3U1_dDfRxBzXKLerxgd0DOtx4Wa9RKtQgnISJhqVj2zv7m9qyYj_QZOheSOwy3D5Lq6RKmcZGlhcSrKevfRwQKOQnfsRepIK-gviLxND3Kg0HNCGbdu_syD1yzPDIln0JB8XX9xXXgGJ9SbDm_pYxL5sTnJgUubyYyOympykDrDDuRVqV0AtuUn1of4V8-3sVPxmerqGFjkgXJe_4ITDd8Yx9zFuS9HWa0iqY8YtrSAcq75FTKhNMxjrzinTnwNo"/>
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="Close-up of a high-end beauty treatment involving luxury serums and gold-leaf details on a client's face. The mood is clinical yet opulent, with cool surgical lighting balanced by warm amber highlights. Every drop of product is captured in high resolution, emphasizing the quality and exclusivity of the treatment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhd8bESCSkm9BHXVdCCRvL0j1aDSvT5ekSdnCDZ3sOxMel-tpXktHC6cQ_7Gw67jHJaMB7_u5GOoZ69llvcghxuKOVaaH7wQO2F0Itoi9UXmRKX0rXEk4Hy2AmNmoKF5KaIFISAd6GyuO1U2jMf8RjvWsy3tjjf4uzDOixxi1TclqmcCI5_9Wvb2oGrZv-3KfJ8z6EsbXvQBqCjqR0FlTOFSNalGX7TjzChwL7HWlyJSX7x5JmPUpVDounJmR68G4qOKETUMcjCw"/>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="A striking portrait of a woman with voluminous dark curls and bold gold-tone makeup. The shot is an extreme close-up focusing on the texture of her hair and the metallic sheen of her eyelids. The lighting is warm and directional, creating deep shadows and highlighting the luxurious skin texture in a minimalist, dark studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2T8bM-7mlt52Iw4gnlPUjbMbz4X0ql7CGlcP1KX8RjcMRvsYv6NspxyBBIE0nGmUJ7KZzxUC-hBadyNRGBsr6f-OYfoCwZPVPAdaCc-3iY96ZMH-qBqZ2nt5oPYat9u_lqh20VxP5YVrWgyVk7VabrgaE6xP_GtEQMXQvPe_oNRxyObzgKejiXaSN1DmnO_MSS12eof--j6RI_67bkGytn100hivm9G7oVeEGntcJvLS3EbJwPGM_hCz4LLoudUYMT9UcB5pqYL4"/>
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="Professional hair coloring results showing a perfect transition from dark roots to honey-gold highlights. The hair is styled in loose, glamorous waves that catch the soft overhead light. The overall aesthetic is one of expensive grooming and flawless execution, set against a dark, minimalist salon backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJq9zeLaWumJe8LGe_bNe7YY3aDz61xs1ii8TGVih9RcbMRug85O8aR52xNMJ_kS8gOXSCUowaajblgxccz6ovo3k4RfD1VufuVU2mrOCrCIHlfIRyli82MSbCf8AY0xnzR7CLZ84GvJMeLFzeSOS8zjPkdP3V_Nu1dRnz3-T4LmzHlZzSSOWKWa9OB7SXpysdsQ5iqRH9EKGLy_926xMKEBGHRllgV4AR5E_WwvDD7iBNAcjJVoUYZuWksiCCf5x1WPuh2isxtTg"/>
+                    </div>
+                    <div class="space-y-4">
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="A profile view of a model with an intricate, artistic updo. The hair is woven with fine gold threads that shimmer under a single spotlight. The high-contrast black and white photography style with golden accents emphasizes the sculptural quality of the hairstyling and the elite nature of the salon's services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QxiJT8nDOr4QDHpteeFV_1_PCyv3ALYdAkuavkx5ZhpWqC0YchRBRNM9Vttnuv_VbTPMgy_sEUItMzlD4fV6Su8qJRPEg2HM9HCJwsjkh7ahUIWhypwHzHcQMKHxMBcyxJ714XAg_8vovoQ7fRylbt5pfGd4W-ChSvpHXefgMIvW90qzo6g6kukAyPqacotrzdZcZMeBUWrzY7TB4P40vPQFrZ_SkdKrO22LbZW_EuiA2Yoyxa6wfbi7Muc4ky6IBnA_ZUbeLcQ"/>
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="An editorial shot of high-fashion makeup featuring deep red lips and golden highlighter. The skin is matte and flawless. The lighting is hard, creating a dramatic, confident look that reflects a high-end beauty salon's capability for social events and fashion-forward clients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr7Qt-P-WCuAleq6r8mNfzDGxmbC80u1Z_K36ntLKU0WOMsbh26hw4FUllVxLckILajTJm5zs625QUHOfz4f79ll8shAi3ehK6mAog5zko9zbZxV55Xltdg0i9paF4meE54O9z3siw-7Jk4ofMZnYFHkoaqYx5p0L3dapHM1cPsaBqk7JF2DsDKH1afK7dHkaF1VJAt4f6zu_AXF5pEYvcv1NVbVBEcltbqKJW0LudjKOve0DJLnPG_7gCDIJ_uAXDgEhx3Ij4XZg"/>
+                    </div>
+                    <div class="space-y-4 pt-12">
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="A serene moment of a woman receiving a scalp massage during a luxury hair treatment. Her eyes are closed, and the lighting is a soft, warm amber glow that fills the dark space. The focus is on the peaceful experience and the high-touch service provided by the salon, emphasizing relaxation and premium care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfYTLapHW3huJ59BR1dQgCkppTYNrIn0lxtRmJjm3jEZ-FVMschH9hW_AY3MzWi6iN4NONrGmFTGqu8kceDkEyV3y0K7X30MOT0OI7glies0T-DBtF2pim_8jWrj0v4SCqClYeaQTo16ocTW97wlLXGWB7e12fRuB0YraxnsqdYVnlWyuVyRrTX0mVPFhlPe4nQFCAzl1QigdkoomUR7s3scUHpeR33n62vuG1nxVccsWWV5yUiOPiyvUoLhfH4lWzozaltwk2UrA"/>
+                        <img class="w-full grayscale hover:grayscale-0 transition-all duration-500 gold-border-subtle" data-alt="Showcasing high-end salon tools—gold-plated scissors and brushes—resting on a dark marble surface. The lighting is focused, casting long shadows and highlighting the metallic gleam of the tools. This image conveys the salon's commitment to precision, quality equipment, and a luxurious physical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXFg5u9reSLFkmqVAdRYkIz1bXHOs2HP90s_oOiJMSXK5dzSJG7ml-2Rb4J5zdcChl2tJnWyvpkySIll7JvH_fw05IzV557ZzxtVhixFG8w-wLJjJ_sUmnr3oBSbLTsJW_q98SXpOxpdBxIIJkhPlyRer6aRAzrPDm7PjJCNXnk20tqOaVWg76JUfJyMsMa522PAGfWHUPvgyr7d90QXcum0i06L6EBtlUe0LtLSi-5Jd7vPgpBaYyDrtOYmrXe44Oj7OV-WyjLdM"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Us Section -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden" id="about">
+            <div class="flex flex-col md:flex-row items-center gap-gutter">
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 border border-primary/20 z-0"></div>
+                    <img class="relative z-10 w-full aspect-square object-cover gold-border-subtle" data-alt="Interior of a luxury beauty salon 'Lumière'. The space features black marble floors, brushed gold wall panels, and large back-lit mirrors. The lighting is sophisticated and zoned, with spotlights on styling stations and soft ambient lighting in the waiting area. The overall atmosphere is silent, high-end, and architectural, resembling a luxury hotel lobby or an art gallery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRA95CI6wn8T-pZfh6weLWMrg44ZjgkcFDthftaN-4HDdojQAn6PqATmzFmtw967f3QVeKK4RRbpwxNXvKZpsL_QaUuitv2hs_Z-1wIqj-aIrqwz449266xVED5KMhViC6GSU9pqwo79lReuKRTj9G7nSmXNqBs61_Jyo8HMm5-448skfVpiDow-aFNpcAWczE0NbAWpbWKn1pI7pj32IYVmdT6LckdU6FZ4kqE1suykfmWEEOC177BtIZ6-ek7wTiGKBkc51CZt0"/>
+                </div>
+                <div class="md:w-1/2 md:pl-16">
+                    <p class="font-label-caps text-label-caps text-primary mb-6 tracking-[0.3em]">NOSSA ESSÊNCIA</p>
+                    <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface mb-8 leading-tight">Excelência em cada detalhe, Luxo em cada toque.</h2>
+                    <p class="text-body-lg text-on-surface-variant mb-8">
+                        No LUMIÈRE, acreditamos que a beleza é uma manifestação da alma. Nossa missão é proporcionar uma experiência sensorial completa, onde o tempo desacelera e a sua transformação é conduzida pelos melhores specialists do país.
+                    </p>
+                    <p class="text-body-md text-on-surface-variant/80 mb-10">
+                        Cada serviço é uma curadoria de luxo, utilizando produtos das mais prestigiadas marcas mundiais e técnicas exclusivas que garantem um resultado impecável e duradouro.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-primary/10">
+                        <div>
+                            <p class="font-display-lg text-primary text-headline-md mb-1">15+</p>
+                            <p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">ANOS DE HISTÓRIA</p>
+                        </div>
+                        <div>
+                            <p class="font-display-lg text-primary text-headline-md mb-1">20k</p>
+                            <p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">CLIENTES SATISFEITOS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Booking Section -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container relative">
+            <div class="max-w-container-max mx-auto text-center">
+                <div class="inline-block p-4 border border-primary/20 mb-8">
+                    <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                </div>
+                <h2 class="font-display-lg-mobile text-display-lg-mobile md:text-display-lg text-on-surface mb-6">Reserve seu Momento</h2>
+                <p class="text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Estamos localizados no coração da cidade, prontos para oferecer o atendimento que você merece. Agende sua consultoria agora.
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-16">
+                    <a class="w-full md:w-auto bg-[#25D366] text-white font-label-caps text-label-caps px-12 py-5 tracking-widest flex items-center justify-center gap-3 hover:brightness-110 transition-all" href="#">
+                        <span class="material-symbols-outlined">chat</span> WHATSAPP
+                    </a>
+                    <a class="w-full md:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-12 py-5 tracking-widest hover:bg-primary-fixed transition-all" href="#">
+                        AGENDAR AGORA
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-on-surface-variant">
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-primary mb-4">location_on</span>
+                        <p class="font-label-caps text-[10px] tracking-widest mb-2">LOCALIZAÇÃO</p>
+                        <p class="font-body-md">Av. da Elegância, 1000 - Jardins, SP</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-primary mb-4">schedule</span>
+                        <p class="font-label-caps text-[10px] tracking-widest mb-2">HORÁRIOS</p>
+                        <p class="font-body-md">Seg - Sáb: 09h às 20h</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-primary mb-4">call</span>
+                        <p class="font-label-caps text-[10px] tracking-widest mb-2">CONTATO</p>
+                        <p class="font-body-md">+55 (11) 99999-0000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-primary/10">
+        <div class="flex flex-col items-center gap-base px-margin-mobile text-center max-w-container-max mx-auto">
+            <span class="font-display-lg-mobile text-display-lg-mobile text-primary mb-4">LUMIÈRE</span>
+            <div class="flex flex-wrap justify-center gap-gutter mb-8">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#services">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#portfolio">Portfolio</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#about">Contact</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Privacy</a>
+            </div>
+            <div class="flex gap-6 mb-8">
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+                    <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                </a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+                    <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z"></path></svg>
+                </a>
+            </div>
+            <p class="font-body-md text-on-surface-variant/60 text-xs tracking-widest">© 2024 LUMIÈRE BEAUTY. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+</body>
+</html>
