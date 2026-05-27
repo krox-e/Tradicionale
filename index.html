@@ -323,25 +323,67 @@
 </head>
 <body class="font-body-md text-body-md">
     <div id="scroll-progress"></div>
-    <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-        <div class="flex justify-between items-center px-6 py-4 w-full max-w-[1600px] mx-auto md:px-12">
-            <div class="flex items-center gap-4">
-                <span class="material-symbols-outlined text-primary text-2xl">menu</span>
-                <span class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary md:text-headline-md">TRADICIONALE</span>
-            </div>
-            <div class="hidden md:flex gap-8 items-center">
-                <a class="font-label-caps text-label-caps text-primary font-bold hover:text-primary-fixed transition-colors duration-300" href="#services">SERVICES</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#portfolio">PORTFOLIO</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">ABOUT</a>
-            </div>
-            <div class="tooltip-container w-44 h-12">
+    
+    <!-- Mobile Drawer Overlay -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] hidden opacity-0 transition-opacity duration-300 ease-in-out"></div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-y-0 left-0 w-72 bg-[#131313]/95 backdrop-blur-2xl border-r border-primary/20 z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-8">
+        <div class="flex justify-between items-center mb-10">
+            <span class="font-semibold text-lg tracking-[0.2em] text-primary font-display-lg-mobile">TRADICIONALE</span>
+            <button id="menu-close" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none" aria-label="Fechar menu">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6">
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#services">SERVICES</a>
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#portfolio">PORTFOLIO</a>
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#about">ABOUT</a>
+        </nav>
+        <div class="mt-auto pt-6 border-t border-primary/10">
+            <div class="tooltip-container w-full h-12">
                 <button class="led-button">
                     <span class="led-button-content">
                         BOOK NOW
                     </span>
                 </button>
                 <span class="tooltip-content tooltip-bottom">Agendar Online</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="flex justify-between items-center px-6 py-4 w-full max-w-[1600px] mx-auto md:px-12">
+            <div class="flex items-center gap-2 md:gap-4">
+                <button id="menu-toggle" class="text-primary hover:text-primary-fixed focus:outline-none transition-colors p-1" aria-label="Abrir menu">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+                <span class="font-semibold text-lg md:text-2xl tracking-[0.25em] text-primary font-display-lg-mobile uppercase">TRADICIONALE</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="font-label-caps text-label-caps text-primary font-bold hover:text-primary-fixed transition-colors duration-300" href="#services">SERVICES</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#portfolio">PORTFOLIO</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">ABOUT</a>
+            </div>
+            <!-- Responsive Book Now Button -->
+            <!-- Desktop version -->
+            <div class="hidden sm:block tooltip-container w-36 md:w-44 h-10 md:h-12">
+                <button class="led-button">
+                    <span class="led-button-content text-[10px] md:text-xs">
+                        BOOK NOW
+                    </span>
+                </button>
+                <span class="tooltip-content tooltip-bottom">Agendar Online</span>
+            </div>
+            <!-- Mobile version -->
+            <div class="block sm:hidden tooltip-container w-10 h-10">
+                <button class="led-button" aria-label="Agendar Online">
+                    <span class="led-button-content p-0">
+                        <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                    </span>
+                </button>
+                <span class="tooltip-content tooltip-bottom">Agendar</span>
             </div>
         </div>
     </header>
@@ -353,7 +395,7 @@
                 <div class="hero-gradient-overlay absolute inset-0"></div>
             </div>
             <div class="relative z-10 text-center px-margin-mobile max-w-4xl">
-                <p class="scroll-reveal font-label-caps text-label-caps text-primary mb-6 tracking-[0.4em]" data-delay="100">EXCLUSIVIDADE &amp; REFINAMENTO</p>
+                <p class="scroll-reveal font-label-caps text-label-caps text-primary mb-6 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm" data-delay="100">EXCLUSIVIDADE &amp; REFINAMENTO</p>
                 <h1 class="scroll-reveal font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg mb-8 text-on-surface" data-delay="300">
                     Sua Beleza, <br/>Nossa <span class="text-primary italic">Obra de Arte</span>
                 </h1>
@@ -652,7 +694,7 @@
     <!-- Footer -->
     <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-primary/10">
         <div class="flex flex-col items-center gap-base px-margin-mobile text-center max-w-container-max mx-auto">
-            <span class="font-display-lg-mobile text-display-lg-mobile text-primary mb-4">TRADICIONALE</span>
+            <span class="font-semibold text-2xl md:text-3xl tracking-[0.25em] text-primary mb-4 font-display-lg-mobile uppercase">TRADICIONALE</span>
             <div class="flex flex-wrap justify-center gap-gutter mb-8">
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#services">Services</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#portfolio">Portfolio</a>
@@ -738,6 +780,42 @@
 
             revealElements.forEach(el => {
                 observer.observe(el);
+            });
+
+            // Mobile Drawer Toggle Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.getElementById('menu-close');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerOverlay = document.getElementById('drawer-overlay');
+            const drawerLinks = document.querySelectorAll('.drawer-link');
+
+            const openDrawer = () => {
+                drawerOverlay.classList.remove('hidden');
+                // Force a reflow to trigger transition
+                void drawerOverlay.offsetWidth;
+                drawerOverlay.classList.add('opacity-100');
+                mobileDrawer.classList.remove('-translate-x-full');
+                document.body.style.overflow = 'hidden'; // Disable background scroll
+            };
+
+            const closeDrawer = () => {
+                drawerOverlay.classList.remove('opacity-100');
+                mobileDrawer.classList.add('-translate-x-full');
+                document.body.style.overflow = ''; // Re-enable scroll
+                
+                // Hide overlay after transition ends
+                setTimeout(() => {
+                    if (mobileDrawer.classList.contains('-translate-x-full')) {
+                        drawerOverlay.classList.add('hidden');
+                    }
+                }, 300);
+            };
+
+            if (menuToggle) menuToggle.addEventListener('click', openDrawer);
+            if (menuClose) menuClose.addEventListener('click', closeDrawer);
+            if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+            drawerLinks.forEach(link => {
+                link.addEventListener('click', closeDrawer);
             });
 
             // Bookmark Toggle Logic (emulates Radix UI / Shadcn Toggle component)
