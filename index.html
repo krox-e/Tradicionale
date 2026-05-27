@@ -330,8 +330,10 @@
         }
     </style>
     <style>
-        body {
-            min-height: max(884px, 100dvh);
+        @media (min-width: 768px) {
+            body {
+                min-height: max(884px, 100dvh);
+            }
         }
     </style>
 </head>
@@ -403,7 +405,7 @@
     </header>
     <main>
         <!-- Hero Section -->
-        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <section class="relative min-h-[80vh] md:h-screen flex items-center justify-center overflow-hidden py-16 md:py-0">
             <div class="absolute inset-0 z-0">
                 <img class="w-full h-full object-cover" src="assets/hero_woman.png" alt="Mulher com cabelo estilizado e pele brilhante sob iluminação dourada e fundo escuro"/>
                 <div class="hero-gradient-overlay absolute inset-0"></div>
@@ -434,7 +436,7 @@
             </div>
         </section>
         <!-- Services Section -->
-        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
+        <section class="pt-10 pb-16 md:py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
             <div class="scroll-reveal text-center mb-16">
                 <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface mb-4">Nossos Serviços Premium</h2>
                 <div class="w-20 h-px bg-primary mx-auto"></div>
@@ -544,7 +546,7 @@
             </div>
         </section>
         <!-- Gallery Section -->
-        <section class="bg-surface-container-lowest py-section-gap" id="portfolio">
+        <section class="bg-surface-container-lowest py-16 md:py-section-gap" id="portfolio">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="scroll-reveal flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div class="max-w-2xl">
@@ -645,7 +647,7 @@
             </div>
         </section>
         <!-- About Us Section -->
-        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden" id="about">
+        <section class="py-16 md:py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden" id="about">
             <div class="flex flex-col md:flex-row items-center gap-gutter">
                 <div class="scroll-reveal md:w-1/2 relative" data-delay="0">
                     <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 border border-primary/20 z-0"></div>
@@ -674,7 +676,7 @@
             </div>
         </section>
         <!-- Booking Section -->
-        <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container relative">
+        <section class="py-16 md:py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container relative">
             <div class="max-w-container-max mx-auto text-center">
                 <div class="scroll-reveal inline-block p-4 border border-primary/20 mb-8" data-delay="0">
                     <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
@@ -722,7 +724,7 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-primary/10">
+    <footer class="w-full py-16 md:py-section-gap bg-surface-container-lowest border-t border-primary/10">
         <div class="flex flex-col items-center gap-base px-margin-mobile text-center max-w-container-max mx-auto">
             <span class="font-display-lg-mobile text-3xl md:text-4xl tracking-tighter text-primary mb-4 font-bold">TRADICIONALE</span>
             <div class="flex flex-wrap justify-center gap-gutter mb-8">
