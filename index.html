@@ -384,7 +384,7 @@
                 <div class="w-20 h-px bg-primary mx-auto"></div>
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
                 <!-- Service 1 -->
-                <div class="scroll-reveal group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="0">
+                <div class="scroll-reveal group service-card flex flex-col relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="0">
                     <button class="bookmark-btn tooltip-container" aria-label="Salvar Hair Styling nos favoritos" data-id="service-hair-styling">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
                         <span class="tooltip-content tooltip-bottom">Salvar nos favoritos</span>
@@ -392,29 +392,33 @@
                     <div class="aspect-[3/4] overflow-hidden">
                         <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A close-up shot of a professional hair stylist's hands working on a sleek, high-shine brunette hair transformation. The lighting is cinematic, highlighting the silky texture and golden undertones of the hair. The background is a minimalist black salon interior with warm golden accent lights that create an atmosphere of precision and elite beauty craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgzEPBbBd2x-uRqJUzvK5_AJL-QD8_Z5rdoEZlsocnv-DtfRYutHlEdg9l-e-KVDgxCfJULAIAGHvAJ97zSuQBiYWoRKNQ-3GpZjtjb1TaApWSobJ_mRtUSTB54IR_41xRLk5nCB5piV6oPOrQmf_ZjtahbWXmzWMFEgH-SdRvd9YbvGbrV8hXoxI_TvK7lb7w0SD2UT1j8ZQ9aNOiBJLH2xJSD5RsrOMbIBEmMBY_q-g52r9Pv65UgkHdKnsF7SMY8sPMsuY0aOI"/>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">content_cut</span>
-                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Hair Styling</h3>
-                        </div>
-                        <p class="text-on-surface-variant font-body-md mb-6">Cortes e colorações personalizadas que transcendem tendências, focando na sua identidade única.</p>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
-                        </div>
-                        <!-- Progress Bar -->
-                        <div class="mt-4 pt-4 border-t border-primary/5">
-                            <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                <span>ÍNDICE DE SATISFAÇÃO</span>
-                                <span class="text-primary font-bold">98%</span>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Hair Styling</h3>
                             </div>
-                            <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                                <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="98%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                            <p class="text-on-surface-variant font-body-md mb-6">Cortes e colorações personalizadas que transcendem tendências, focando na sua identidade única.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-4 pt-4 border-t border-primary/5">
+                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
+                                    <span>ÍNDICE DE SATISFAÇÃO</span>
+                                    <span class="text-primary font-bold">98%</span>
+                                </div>
+                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="98%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Service 2 -->
-                <div class="scroll-reveal group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="150">
+                <div class="scroll-reveal group service-card flex flex-col relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="150">
                     <button class="bookmark-btn tooltip-container" aria-label="Salvar Skin Care nos favoritos" data-id="service-skin-care">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
                         <span class="tooltip-content tooltip-bottom">Salvar nos favoritos</span>
@@ -422,29 +426,33 @@
                     <div class="aspect-[3/4] overflow-hidden">
                         <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A luxurious facial treatment scene showing a client with flawless, dewy skin. A professional hand applies a gold-infused treatment oil. The lighting is soft and ethereal, capturing the reflective quality of the skincare products. The color palette is composed of deep blacks, soft skin tones, and bright gold accents, evoking a sense of calm, science, and extreme luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQ91yETzDM5lAaLBMC9DeClMR4plw2pzW7gFvqhJBWYNTEs1WTSpTgtHigFfg8EdFbq6TmGZGY8AAxWB3tA8dZvAg4dou9E3RUduAhD-U51lbt6GJzp_PcsikJfz7IKAT1q5ZUWKukghIQZv1kEEgda6rlmC1u822VOzqvDb9zHL5qLZQbEoTMJlsaYocgB2H6lMoUm7rrCQa4KDwE7Lb79Mj-6JrXCHkF_wqqFHSSI8gobCnmem87EJiDoluW1M-d9Eg_EJ8qqQ"/>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">face</span>
-                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Skin Care</h3>
-                        </div>
-                        <p class="text-on-surface-variant font-body-md mb-6">Protocolos avançados de revitalização com tecnologia de ponta e ativos de luxo para uma pele radiante.</p>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
-                        </div>
-                        <!-- Progress Bar -->
-                        <div class="mt-4 pt-4 border-t border-primary/5">
-                            <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                <span>ÍNDICE DE SATISFAÇÃO</span>
-                                <span class="text-primary font-bold">95%</span>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">face</span>
+                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Skin Care</h3>
                             </div>
-                            <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                                <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="95%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                            <p class="text-on-surface-variant font-body-md mb-6">Protocolos avançados de revitalização com tecnologia de ponta e ativos de luxo para uma pele radiante.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-4 pt-4 border-t border-primary/5">
+                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
+                                    <span>ÍNDICE DE SATISFAÇÃO</span>
+                                    <span class="text-primary font-bold">95%</span>
+                                </div>
+                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="95%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Service 3 -->
-                <div class="scroll-reveal group service-card relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="300">
+                <div class="scroll-reveal group service-card flex flex-col relative overflow-hidden bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="300">
                     <button class="bookmark-btn tooltip-container" aria-label="Salvar Makeup Artistry nos favoritos" data-id="service-makeup-artistry">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
                         <span class="tooltip-content tooltip-bottom">Salvar nos favoritos</span>
@@ -452,23 +460,27 @@
                     <div class="aspect-[3/4] overflow-hidden">
                         <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An artistic focus on high-end makeup application, showing a makeup artist applying fine details to a model's eye. The makeup features subtle metallic gold flakes and perfect contouring. The scene is shot in a high-contrast editorial style, with deep shadows and sharp, focused lighting that creates a feeling of meticulous artistry and glamour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9XtyRiLj1kdsYt7TCKNLC6DwHXRIJ7ZqWxG-CAsiZcyJCVmobYxnnij6H3Ro8jsepNhB_-yfq8OlyCxTTq4pQadGRC9V7Ap4sWvVZWpoChoJietUZCsw8bDSguODLTPdA-qZl4322YwyBXVwJI3skpv5lr_2K2h3qWkEuLJHUGDFOSOZZl_QrsV0piLZfgNQgOs54DX5Q5vbZFKUSAcPct_ouWPdRn2hlm92IL4uTOIW8U9kueHUkrrQaSDd6qRwTNnA0AJP2Pt4"/>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
-                            <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Makeup Artistry</h3>
-                        </div>
-                        <p class="text-on-surface-variant font-body-md mb-6">Maquiagem editorial e social que ressalta seus traços mais belos com acabamento impecável.</p>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
-                        </div>
-                        <!-- Progress Bar -->
-                        <div class="mt-4 pt-4 border-t border-primary/5">
-                            <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                <span>ÍNDICE DE SATISFAÇÃO</span>
-                                <span class="text-primary font-bold">97%</span>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Makeup Artistry</h3>
                             </div>
-                            <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100">
-                                <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="97%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                            <p class="text-on-surface-variant font-body-md mb-6">Maquiagem editorial e social que ressalta seus traços mais belos com acabamento impecável.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline">SABER MAIS —</span>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-4 pt-4 border-t border-primary/5">
+                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
+                                    <span>ÍNDICE DE SATISFAÇÃO</span>
+                                    <span class="text-primary font-bold">97%</span>
+                                </div>
+                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="97%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
