@@ -214,6 +214,93 @@
             border-color: rgba(233, 193, 118, 0.6);
         }
 
+        /* LED Button Styling */
+        .led-button {
+            position: relative;
+            background: rgba(233, 193, 118, 0.1);
+            border-radius: 0.375rem;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5px;
+            z-index: 1;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        
+        .led-button-content {
+            background: #131313;
+            color: #e2e2e2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            border-radius: calc(0.375rem - 1.5px);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+
+        /* LED border beam rotating background */
+        .led-button::before {
+            content: '';
+            position: absolute;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 60%,
+                #e9c176 80%,
+                #ffdea5 95%,
+                transparent 100%
+            );
+            animation: rotate-led 4s linear infinite;
+            z-index: -1;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes rotate-led {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hover States */
+        .led-button:hover::before {
+            opacity: 1;
+            animation-duration: 2s;
+        }
+
+        .led-button:hover .led-button-content {
+            background: rgba(233, 193, 118, 0.08);
+            color: #e9c176;
+            box-shadow: inset 0 0 12px rgba(233, 193, 118, 0.15);
+        }
+        
+        .led-button:active {
+            transform: scale(0.97);
+        }
+
         /* Scroll Reveal Animations */
         .scroll-reveal {
             opacity: 0;
@@ -246,10 +333,14 @@
                 <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#portfolio">PORTFOLIO</a>
                 <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">ABOUT</a>
             </div>
-            <button class="tooltip-container font-label-caps text-label-caps bg-primary text-on-primary border border-transparent hover:bg-transparent hover:text-primary hover:border-primary px-6 py-3 tracking-widest active:scale-95 transition-all duration-300">
-                BOOK NOW
+            <div class="tooltip-container w-44 h-12">
+                <button class="led-button">
+                    <span class="led-button-content">
+                        BOOK NOW
+                    </span>
+                </button>
                 <span class="tooltip-content tooltip-bottom">Agendar Online</span>
-            </button>
+            </div>
         </div>
     </header>
     <main>
@@ -265,14 +356,22 @@
                     Sua Beleza, <br/>Nossa <span class="text-primary italic">Obra de Arte</span>
                 </h1>
                 <div class="scroll-reveal flex flex-col md:flex-row gap-6 justify-center items-center" data-delay="500">
-                    <button class="tooltip-container bg-primary text-on-primary border border-transparent hover:bg-transparent hover:text-primary hover:border-primary font-label-caps text-label-caps px-10 py-5 tracking-widest active:scale-95 transition-all duration-300">
-                        AGENDAR EXPERIÊNCIA
+                    <div class="tooltip-container w-full md:w-72 h-16">
+                        <button class="led-button">
+                            <span class="led-button-content">
+                                AGENDAR EXPERIÊNCIA
+                            </span>
+                        </button>
                         <span class="tooltip-content">Escolha seu serviço</span>
-                    </button>
-                    <button class="tooltip-container border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-label-caps text-label-caps px-10 py-5 tracking-widest active:scale-95 transition-all duration-300">
-                        DESCUBRA MAIS
+                    </div>
+                    <div class="tooltip-container w-full md:w-72 h-16">
+                        <button class="led-button">
+                            <span class="led-button-content">
+                                DESCUBRA MAIS
+                            </span>
+                        </button>
                         <span class="tooltip-content">Conheça nosso salão</span>
-                    </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -382,10 +481,14 @@
                         <p class="font-label-caps text-label-caps text-primary mb-4">NOSSO PORTFÓLIO</p>
                         <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface">Resultados Impecáveis</h2>
                     </div>
-                    <button class="tooltip-container border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-label-caps text-label-caps px-6 py-3 tracking-widest active:scale-95 transition-all duration-300">
-                        VER TODOS OS LOOKS
+                    <div class="tooltip-container w-full md:w-72 h-16">
+                        <button class="led-button">
+                            <span class="led-button-content">
+                                VER TODOS OS LOOKS
+                            </span>
+                        </button>
                         <span class="tooltip-content">Ver portfólio completo</span>
-                    </button>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="scroll-reveal space-y-4" data-delay="0">
@@ -495,14 +598,22 @@
                     Estamos localizados no coração da cidade, prontos para oferecer o atendimento que você merece. Agende sua consultoria agora.
                 </p>
                 <div class="scroll-reveal flex flex-col md:flex-row gap-6 justify-center items-center mb-16" data-delay="300">
-                    <a class="tooltip-container w-full md:w-auto bg-primary text-on-primary border border-transparent hover:bg-transparent hover:text-primary hover:border-primary font-label-caps text-label-caps px-12 py-5 tracking-widest flex items-center justify-center gap-3 active:scale-95 transition-all duration-300" href="#">
-                        <span class="material-symbols-outlined">chat</span> WHATSAPP
+                    <div class="tooltip-container w-full md:w-72 h-16">
+                        <a class="led-button" href="https://wa.me/5511999990000" target="_blank">
+                            <span class="led-button-content">
+                                <span class="material-symbols-outlined text-[16px]">chat</span> WHATSAPP
+                            </span>
+                        </a>
                         <span class="tooltip-content">Fale conosco no WhatsApp</span>
-                    </a>
-                    <a class="tooltip-container w-full md:w-auto bg-primary text-on-primary border border-transparent hover:bg-transparent hover:text-primary hover:border-primary font-label-caps text-label-caps px-12 py-5 tracking-widest flex items-center justify-center gap-3 active:scale-95 transition-all duration-300" href="#">
-                        AGENDAR AGORA
+                    </div>
+                    <div class="tooltip-container w-full md:w-72 h-16">
+                        <a class="led-button" href="#">
+                            <span class="led-button-content">
+                                AGENDAR AGORA
+                            </span>
+                        </a>
                         <span class="tooltip-content">Agende sua visita</span>
-                    </a>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-on-surface-variant">
                     <div class="scroll-reveal flex flex-col items-center" data-delay="400">
