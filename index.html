@@ -132,7 +132,7 @@
 </head>
 <body class="font-body-md text-body-md">
     <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-primary/20">
+    <header class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="flex justify-between items-center px-margin-mobile py-4 w-full max-w-container-max mx-auto md:px-margin-desktop">
             <div class="flex items-center gap-4">
                 <span class="material-symbols-outlined text-primary text-2xl">menu</span>
@@ -351,16 +351,18 @@
         });
 
         // Simple header scroll effect
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('py-2');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'bg-background/80', 'backdrop-blur-xl', 'border-b', 'border-primary/20');
                 header.classList.remove('py-4');
             } else {
                 header.classList.add('py-4');
-                header.classList.remove('py-2');
+                header.classList.remove('py-2', 'bg-background/80', 'backdrop-blur-xl', 'border-b', 'border-primary/20');
             }
-        });
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
     </script>
 </body>
 </html>
