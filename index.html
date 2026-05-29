@@ -402,8 +402,20 @@
     <header class="absolute top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
         <div class="flex justify-between items-center px-6 py-4 w-full max-w-[1600px] mx-auto md:px-12">
             <div class="flex items-center gap-2 md:gap-4">
+                <!-- Hamburger Menu for Mobile -->
+                <button id="menu-toggle" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1 mr-1" aria-label="Abrir menu">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
                 <span class="font-display-lg-mobile text-xl min-[375px]:text-2xl md:text-headline-md tracking-tighter text-primary font-bold">TRADICIONALE</span>
             </div>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#services">SERVICES</a>
+                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#portfolio">PORTFOLIO</a>
+                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#about">ABOUT</a>
+            </nav>
+            
             <!-- Responsive Book Now Button -->
             <!-- Desktop version -->
             <div class="hidden sm:block tooltip-container w-36 md:w-44 h-10 md:h-12">
@@ -448,7 +460,7 @@
 
                 <!-- Camada 4: Modelo (Frente - com fundo transparente) -->
                 <div data-parallax-layer="4" class="absolute inset-x-0 bottom-0 h-[85vh] md:h-[95vh] flex justify-center items-end z-20">
-                    <img class="h-full object-contain object-bottom select-none" src="assets/hero_woman.png" alt="Modelo Tradicionale" style="mix-blend-mode: lighten;"/>
+                    <img class="h-full object-contain object-bottom select-none scale-[1.65] md:scale-100 origin-bottom" src="assets/hero_woman.png" alt="Modelo Tradicionale" style="mix-blend-mode: lighten;"/>
                 </div>
             </div>
 
@@ -460,7 +472,7 @@
                 <p class="font-label-caps text-label-caps text-primary mb-4 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm">
                     EXCLUSIVIDADE &amp; REFINAMENTO
                 </p>
-                <h1 class="font-display-lg-mobile text-3xl md:font-display-lg md:text-5xl text-center text-on-surface mb-8 max-w-2xl font-bold leading-tight">
+                <h1 id="hero-title" class="font-display-lg-mobile text-3xl md:font-display-lg md:text-5xl text-center text-on-surface mb-8 max-w-2xl font-bold leading-tight">
                     Beleza que realça sua <span class="text-primary italic">essência</span>
                 </h1>
                 <div class="flex flex-col md:flex-row gap-4 w-full justify-center max-w-lg">
@@ -606,7 +618,7 @@
                         <span class="tooltip-content">Ver portfólio completo</span>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="scroll-reveal space-y-4" data-delay="0">
                         <div class="relative group gold-border-subtle">
                             <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 1 nos favoritos" data-id="gallery-item-1">
@@ -788,6 +800,11 @@
             <p class="font-body-md text-on-surface-variant/60 text-xs tracking-widest">© 2026 TRADICIONALE BEAUTY. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 bg-[#131313]/85 border border-[#e9c176]/30 backdrop-blur-md text-[#e9c176] rounded-full shadow-2xl opacity-0 translate-y-4 pointer-events-none hover:bg-[#e9c176]/10 hover:border-[#e9c176]/60 active:scale-95 transition-all duration-300" aria-label="Voltar ao topo">
+        <span class="material-symbols-outlined text-2xl">arrow_upward</span>
+    </button>
 
     <!-- Unified Dashboard Modal -->
     <div id="dashboard-modal" class="fixed inset-0 z-[150] hidden opacity-0 transition-opacity duration-300 ease-in-out flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md">
@@ -1373,6 +1390,50 @@
 
         // Main JavaScript logic after DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
+            // SplitText character animation for the hero title
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                let html = '';
+                const childNodes = Array.from(heroTitle.childNodes);
+                childNodes.forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const words = node.textContent.split(/(\s+)/);
+                        words.forEach(word => {
+                            if (word.trim() === '') {
+                                html += word;
+                            } else {
+                                html += `<span class="inline-block whitespace-nowrap">`;
+                                Array.from(word).forEach(char => {
+                                    html += `<span class="split-char inline-block opacity-0">${char}</span>`;
+                                });
+                                html += `</span>`;
+                            }
+                        });
+                    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SPAN') {
+                        const spanClasses = node.className;
+                        html += `<span class="${spanClasses} inline-block whitespace-nowrap">`;
+                        Array.from(node.textContent).forEach(char => {
+                            html += `<span class="split-char inline-block opacity-0">${char}</span>`;
+                        });
+                        html += `</span>`;
+                    }
+                });
+                heroTitle.innerHTML = html;
+
+                // Animate characters using GSAP
+                gsap.fromTo('#hero-title .split-char', 
+                    { opacity: 0, y: 40 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power3.out',
+                        stagger: 0.03,
+                        delay: 0.2
+                    }
+                );
+            }
+
             // Start the gold confetti canvas animation
             initConfettiCanvas();
             // Scroll Reveal Animation (Intersection Observer)
@@ -2071,6 +2132,29 @@
             imageLightbox.addEventListener('click', (e) => {
                 if (e.target === imageLightbox) closeLightbox();
             });
+
+            // Back to Top Button Logic
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    if (winScroll > 400) {
+                        backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                        backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+                    } else {
+                        backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+                        backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', () => {
+                    if (typeof lenis !== 'undefined') {
+                        lenis.scrollTo(0);
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            }
         });
     </script>
 </body>
