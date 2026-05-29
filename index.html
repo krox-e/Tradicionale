@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Tradicionale | Salão de Beleza &amp; Estética Premium</title>
     <meta name="description" content="Viva uma experiência de beleza incomparável no salão Tradicionale. Especialistas em corte de cabelo, estética facial, maquiagem e cuidados premium."/>
+    <link rel="icon" type="image/png" href="/icone.png" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -99,6 +100,8 @@
     <style>
         html {
             scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
         body {
             background-color: #131313;
@@ -120,13 +123,7 @@
             transform: scale(1.05);
         }
         ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #131313;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c5a059;
+            display: none;
         }
         /* Scroll Progress Bar */
         #scroll-progress {
@@ -335,7 +332,26 @@
                 min-height: max(884px, 100dvh);
             }
         }
+        
+        /* Parallax Hero Styles */
+        [data-parallax-layers] {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            will-change: transform;
+        }
+        [data-parallax-layer] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+        }
     </style>
+    <!-- GSAP, ScrollTrigger & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 </head>
 <body class="font-body-md text-body-md">
     <div id="scroll-progress"></div>
@@ -369,18 +385,10 @@
     </div>
 
     <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+    <header class="absolute top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
         <div class="flex justify-between items-center px-6 py-4 w-full max-w-[1600px] mx-auto md:px-12">
             <div class="flex items-center gap-2 md:gap-4">
-                <button id="menu-toggle" class="text-primary hover:text-primary-fixed focus:outline-none transition-colors p-1" aria-label="Abrir menu">
-                    <span class="material-symbols-outlined text-2xl">menu</span>
-                </button>
                 <span class="font-display-lg-mobile text-xl min-[375px]:text-2xl md:text-headline-md tracking-tighter text-primary font-bold">TRADICIONALE</span>
-            </div>
-            <div class="hidden md:flex gap-8 items-center">
-                <a class="font-label-caps text-label-caps text-primary font-bold hover:text-primary-fixed transition-colors duration-300" href="#services">SERVICES</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#portfolio">PORTFOLIO</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#about">ABOUT</a>
             </div>
             <!-- Responsive Book Now Button -->
             <!-- Desktop version -->
@@ -403,34 +411,56 @@
             </div>
         </div>
     </header>
+
     <main>
-        <!-- Hero Section -->
-        <section class="relative min-h-[70vh] md:h-screen flex items-center justify-center overflow-hidden py-10 md:py-0">
-            <div class="absolute inset-0 z-0">
-                <img class="w-full h-full object-cover" src="assets/hero_woman.png" alt="Mulher com cabelo estilizado e pele brilhante sob iluminação dourada e fundo escuro"/>
-                <div class="hero-gradient-overlay absolute inset-0"></div>
+        <!-- Hero Section com Parallax Multicamadas -->
+        <section id="hero" class="relative w-full h-screen overflow-hidden bg-black select-none">
+            <!-- Container do Parallax -->
+            <div data-parallax-layers class="relative w-full h-full">
+                <!-- Camada 1: Fundo (Vem de trás) -->
+                <div data-parallax-layer="1" class="absolute inset-0 w-full h-full">
+                    <img class="w-full h-full object-cover opacity-80" src="assets/hero_bg.png" alt="Fundo abstrato de luxo Tradicionale"/>
+                </div>
+
+                <!-- Camada 2: Luz / Partículas Douradas -->
+                <div data-parallax-layer="2" class="absolute inset-0 w-full h-full pointer-events-none mix-blend-screen opacity-50">
+                    <div class="absolute inset-0 bg-radial-gradient from-[#e9c176]/10 to-transparent"></div>
+                </div>
+
+                <!-- Camada 3: Confetes Dourados (Atrás da modelo) -->
+                <div data-parallax-layer="3" class="absolute inset-0 w-full h-full pointer-events-none z-10">
+                    <canvas id="confetti-canvas" class="w-full h-full"></canvas>
+                </div>
+
+                <!-- Camada 4: Modelo (Frente - com fundo transparente) -->
+                <div data-parallax-layer="4" class="absolute inset-x-0 bottom-0 h-[85vh] md:h-[95vh] flex justify-center items-end z-20">
+                    <img class="h-full object-contain object-bottom select-none" src="assets/hero_woman.png" alt="Modelo Tradicionale" style="mix-blend-mode: lighten;"/>
+                </div>
             </div>
-            <div class="relative z-10 text-center px-margin-mobile max-w-4xl">
-                <p class="scroll-reveal font-label-caps text-label-caps text-primary mb-6 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm" data-delay="100">EXCLUSIVIDADE &amp; REFINAMENTO</p>
-                <h1 class="scroll-reveal font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg mb-8 text-on-surface" data-delay="300">
-                    Sua Beleza, <br/>Nossa <span class="text-primary italic">Obra de Arte</span>
+
+            <!-- Gradiente de Sobreposição/Fade Inferior com Blur para transição de seção -->
+            <div class="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent backdrop-blur-[8px] z-30"></div>
+
+            <!-- Conteúdo/Chamada para Ação Flutuante -->
+            <div class="absolute inset-x-0 bottom-16 flex flex-col items-center justify-center z-40 px-margin-mobile">
+                <p class="font-label-caps text-label-caps text-primary mb-4 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm">
+                    EXCLUSIVIDADE &amp; REFINAMENTO
+                </p>
+                <h1 class="font-display-lg-mobile text-3xl md:font-display-lg md:text-5xl text-center text-on-surface mb-8 max-w-2xl font-bold leading-tight">
+                    Beleza que realça sua <span class="text-primary italic">essência</span>
                 </h1>
-                <div class="scroll-reveal flex flex-col md:flex-row gap-6 justify-center items-center" data-delay="500">
-                    <div class="tooltip-container w-full md:w-72 h-16">
+                <div class="flex flex-col md:flex-row gap-4 w-full justify-center max-w-lg">
+                    <div class="tooltip-container w-full md:w-56 h-12">
                         <button class="led-button" id="hero-agendar-btn">
-                            <span class="led-button-content">
-                                AGENDAR EXPERIÊNCIA
-                            </span>
+                            <span class="led-button-content text-xs">AGENDAR AGORA</span>
                         </button>
-                        <span class="tooltip-content">Escolha seu serviço</span>
+                        <span class="tooltip-content text-xs">Escolha seu serviço</span>
                     </div>
-                    <div class="tooltip-container w-full md:w-72 h-16">
+                    <div class="tooltip-container w-full md:w-56 h-12">
                         <button class="led-button" id="hero-descubra-btn">
-                            <span class="led-button-content">
-                                DESCUBRA MAIS
-                            </span>
+                            <span class="led-button-content text-xs">DESCUBRA MAIS</span>
                         </button>
-                        <span class="tooltip-content">Conheça nosso salão</span>
+                        <span class="tooltip-content text-xs">Conheça nosso espaço</span>
                     </div>
                 </div>
             </div>
@@ -1099,19 +1129,26 @@
             });
         });
 
-        // Simple header scroll effect
-        const handleScroll = () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('py-2', 'bg-background/80', 'backdrop-blur-xl', 'border-primary/20');
-                header.classList.remove('py-4', 'border-transparent');
-            } else {
-                header.classList.add('py-4', 'border-transparent');
-                header.classList.remove('py-2', 'bg-background/80', 'backdrop-blur-xl', 'border-primary/20');
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
+        // GSAP Parallax Animation Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        const parallaxTrigger = document.querySelector('[data-parallax-layers]');
+        if (parallaxTrigger) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: parallaxTrigger,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            // Adjust layer speeds (yPercent positive slides down, creating depth)
+            tl.to('[data-parallax-layer="1"]', { yPercent: 40, ease: "none" }, 0)
+              .to('[data-parallax-layer="2"]', { yPercent: 25, ease: "none" }, 0)
+              .to('[data-parallax-layer="3"]', { yPercent: 15, ease: "none" }, 0)
+              .to('[data-parallax-layer="4"]', { yPercent: 5, ease: "none" }, 0);
+        }
 
         // Scroll Progress Bar Update
         window.addEventListener('scroll', () => {
@@ -1124,8 +1161,195 @@
             }
         });
 
+        // Confetti Canvas Animation (Gold Confetti behind model)
+        const initConfettiCanvas = () => {
+            const canvas = document.getElementById('confetti-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const resizeCanvas = () => {
+                canvas.width = canvas.parentElement.clientWidth || window.innerWidth;
+                canvas.height = canvas.parentElement.clientHeight || window.innerHeight;
+            };
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Gold color variations for confetti matching the Tradicionale color palette
+            const goldColors = [
+                'rgba(233, 193, 118, 0.9)', // Primary gold (#e9c176)
+                'rgba(255, 222, 165, 0.8)', // Primary fixed (#ffdea5)
+                'rgba(197, 160, 89, 0.9)',  // Primary container (#c5a059)
+                'rgba(243, 156, 18, 0.7)',   // Warm amber gold
+                'rgba(212, 175, 55, 0.85)',  // Rich metallic gold
+                'rgba(240, 224, 200, 0.6)'   // Champagne light gold
+            ];
+
+            const confettiPieces = [];
+
+            // Initialize 180 confetti pieces with 3D properties
+            for (let i = 0; i < 180; i++) {
+                confettiPieces.push({
+                    x: -canvas.width * 0.2 + Math.random() * canvas.width * 1.4,
+                    y: -Math.random() * canvas.height * 0.3,
+                    z: Math.random() * 1500 + 800, // Start further back
+                    velocityX: (Math.random() - 0.5) * 0.6,
+                    velocityY: Math.random() * 0.3 + 0.1,
+                    velocityZ: -(Math.random() * 0.6 + 0.3),
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.04,
+                    baseSize: Math.random() * 12 + 6,
+                    opacity: 1,
+                    shape: ['rectangle', 'circle', 'star', 'diamond'][Math.floor(Math.random() * 4)],
+                    color: goldColors[Math.floor(Math.random() * goldColors.length)],
+                    floatPhase: Math.random() * Math.PI * 2,
+                    swayAmplitude: Math.random() * 0.5 + 0.2,
+                    bobAmplitude: Math.random() * 0.3 + 0.1,
+                    fadeStart: 0,
+                    isFading: false
+                });
+            }
+
+            const drawConfetti = (piece) => {
+                const perspective = 800;
+                const scale = perspective / (perspective + piece.z);
+                const projectedX = piece.x + (piece.x - canvas.width / 2) * (1 - scale);
+                const projectedY = piece.y + (piece.y - canvas.height / 2) * (1 - scale);
+                
+                if (scale <= 0.01 || scale > 2) return;
+                
+                const size = piece.baseSize * scale;
+                const opacity = Math.min(piece.opacity * scale * 1.5, 1);
+                
+                ctx.save();
+                ctx.translate(projectedX, projectedY);
+                ctx.rotate(piece.rotation);
+                ctx.globalAlpha = opacity;
+                
+                const shadowIntensity = Math.min(scale * 0.3, 0.2);
+                ctx.shadowColor = `rgba(0, 0, 0, ${shadowIntensity})`;
+                ctx.shadowBlur = scale * 4;
+                ctx.shadowOffsetX = scale * 3;
+                ctx.shadowOffsetY = scale * 3;
+
+                ctx.fillStyle = piece.color;
+
+                switch (piece.shape) {
+                    case 'rectangle':
+                        const width = size * 1.5;
+                        const height = size * 0.8;
+                        ctx.fillRect(-width / 2, -height / 2, width, height);
+                        break;
+                    case 'circle':
+                        ctx.beginPath();
+                        ctx.arc(0, 0, size * 0.6, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 'star':
+                        ctx.beginPath();
+                        const starSize = size * 0.7;
+                        for (let i = 0; i < 6; i++) {
+                            const angle = (i * Math.PI) / 3;
+                            const x = Math.cos(angle) * starSize;
+                            const y = Math.sin(angle) * starSize;
+                            if (i === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                            
+                            const innerAngle = ((i + 0.5) * Math.PI) / 3;
+                            const innerX = Math.cos(innerAngle) * starSize * 0.5;
+                            const innerY = Math.sin(innerAngle) * starSize * 0.5;
+                            ctx.lineTo(innerX, innerY);
+                        }
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    case 'diamond':
+                        ctx.beginPath();
+                        const diamondSize = size * 0.8;
+                        ctx.moveTo(0, -diamondSize);
+                        ctx.lineTo(diamondSize * 0.6, 0);
+                        ctx.lineTo(0, diamondSize);
+                        ctx.lineTo(-diamondSize * 0.6, 0);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                }
+
+                ctx.restore();
+            };
+
+            const updateConfetti = () => {
+                confettiPieces.forEach((piece) => {
+                    piece.floatPhase += 0.02;
+                    
+                    const swayX = Math.sin(piece.floatPhase) * piece.swayAmplitude * 0.3;
+                    const bobY = Math.cos(piece.floatPhase * 0.7) * piece.bobAmplitude * 0.2;
+                    
+                    piece.x += piece.velocityX + swayX;
+                    piece.y += piece.velocityY + bobY;
+                    piece.z += piece.velocityZ;
+                    piece.rotation += piece.rotationSpeed;
+
+                    const turbulence = Math.max(0, 1 - piece.z / 1500) * 0.08;
+                    piece.velocityX += (Math.random() - 0.5) * turbulence * 0.5;
+                    piece.velocityY += (Math.random() - 0.5) * turbulence * 0.5;
+                    
+                    piece.velocityX += (Math.random() - 0.5) * 0.005;
+                    piece.velocityY += (Math.random() - 0.5) * 0.005;
+                    
+                    piece.velocityX *= 0.999;
+                    piece.velocityY *= 0.999;
+                    
+                    piece.velocityY += 0.0005;
+                    piece.velocityZ *= 1.0005;
+
+                    if (!piece.isFading && (piece.z <= 200 || piece.x < -150 || piece.x > canvas.width + 150 || piece.y > canvas.height + 150)) {
+                        piece.isFading = true;
+                        piece.fadeStart = piece.opacity;
+                    }
+                    
+                    if (piece.isFading) {
+                        piece.opacity -= 0.02;
+                    }
+
+                    if (piece.opacity <= 0) {
+                        piece.x = -canvas.width * 0.2 + Math.random() * canvas.width * 1.4;
+                        piece.y = -Math.random() * canvas.height * 0.3;
+                        piece.z = Math.random() * 800 + 1200;
+                        piece.velocityX = (Math.random() - 0.5) * 0.6;
+                        piece.velocityY = Math.random() * 0.3 + 0.1;
+                        piece.velocityZ = -(Math.random() * 0.6 + 0.3);
+                        piece.floatPhase = Math.random() * Math.PI * 2;
+                        piece.opacity = 1;
+                        piece.isFading = false;
+                        piece.fadeStart = 0;
+                    }
+                });
+            };
+
+            let animationId;
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                updateConfetti();
+                confettiPieces.forEach(drawConfetti);
+                animationId = requestAnimationFrame(animate);
+            };
+
+            animate();
+
+            // Handle clean up on resize removal
+            return () => {
+                window.removeEventListener('resize', resizeCanvas);
+                if (animationId) cancelAnimationFrame(animationId);
+            };
+        };
+
         // Main JavaScript logic after DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
+            // Start the gold confetti canvas animation
+            initConfettiCanvas();
             // Scroll Reveal Animation (Intersection Observer)
             const revealElements = document.querySelectorAll('.scroll-reveal');
             const observer = new IntersectionObserver((entries, obs) => {
