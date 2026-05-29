@@ -103,6 +103,20 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
+        /* Lenis - Smooth Scroll com inércia */
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
         body {
             background-color: #131313;
             color: #e2e2e2;
@@ -1113,7 +1127,23 @@
     </div>
 
     <script>
-        // Smooth scrolling for navigation links
+        // === Smooth Scroll com inércia (Lenis) ===
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+            duration: 1.15,                                       // "peso"/duração da inércia
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // desaceleração suave
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 1.6,
+        });
+
+        // Mantém o GSAP ScrollTrigger (parallax) sincronizado com o scroll suave
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // Smooth scrolling for navigation links (via Lenis)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -1121,16 +1151,11 @@
                     const targetEl = document.querySelector(targetId);
                     if (targetEl) {
                         e.preventDefault();
-                        targetEl.scrollIntoView({
-                            behavior: 'smooth'
-                        });
+                        lenis.scrollTo(targetEl, { offset: -80 });
                     }
                 }
             });
         });
-
-        // GSAP Parallax Animation Setup
-        gsap.registerPlugin(ScrollTrigger);
 
         const parallaxTrigger = document.querySelector('[data-parallax-layers]');
         if (parallaxTrigger) {
@@ -1581,7 +1606,7 @@
             if (heroDescubraBtn) {
                 heroDescubraBtn.addEventListener('click', () => {
                     const aboutSection = document.getElementById('about');
-                    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
+                    if (aboutSection) lenis.scrollTo(aboutSection, { offset: -80 });
                 });
             }
 
