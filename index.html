@@ -98,6 +98,11 @@
       }
     </script>
     <style>
+        .bookmark-btn,
+        #gallery-ver-todos-btn,
+        #mobile-floating-summary {
+            display: none !important;
+        }
         html {
             scroll-behavior: smooth;
             scrollbar-width: none;
@@ -339,6 +344,12 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+
+        /* Remove o fundo escuro dos ícones de serviços */
+        .clean-service-icon {
+            filter: contrast(1.55) brightness(0.82);
+            mix-blend-mode: screen;
+        }
     </style>
     <style>
         @media (min-width: 768px) {
@@ -382,9 +393,9 @@
             </button>
         </div>
         <nav class="flex flex-col gap-6">
-            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#services">SERVICES</a>
-            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#portfolio">PORTFOLIO</a>
-            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#about">ABOUT</a>
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#about-us">SOBRE NÓS</a>
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#services">SERVIÇOS</a>
+            <a class="drawer-link font-label-caps text-sm tracking-widest text-on-surface hover:text-primary transition-colors py-2 border-b border-primary/5" href="#about">ESSÊNCIA</a>
         </nav>
         <div class="mt-auto pt-6 border-t border-primary/10">
             <div class="tooltip-container w-full h-12">
@@ -403,18 +414,13 @@
         <div class="flex justify-between items-center px-6 py-4 w-full max-w-[1600px] mx-auto md:px-12">
             <div class="flex items-center gap-2 md:gap-4">
                 <!-- Hamburger Menu for Mobile -->
-                <button id="menu-toggle" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1 mr-1" aria-label="Abrir menu">
+                <button id="menu-toggle" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none flex items-center justify-center p-1 mr-1 md:hidden" aria-label="Abrir menu">
                     <span class="material-symbols-outlined text-2xl">menu</span>
                 </button>
                 <span class="font-display-lg-mobile text-xl min-[375px]:text-2xl md:text-headline-md tracking-tighter text-primary font-bold">TRADICIONALE</span>
             </div>
             
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#services">SERVICES</a>
-                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#portfolio">PORTFOLIO</a>
-                <a class="font-label-caps text-xs tracking-widest text-on-surface/85 hover:text-primary transition-colors" href="#about">ABOUT</a>
-            </nav>
+
             
             <!-- Responsive Book Now Button -->
             <!-- Desktop version -->
@@ -465,11 +471,11 @@
             </div>
 
             <!-- Gradiente de Sobreposição/Fade Inferior com Blur para transição de seção -->
-            <div class="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent backdrop-blur-[8px] z-30"></div>
+            <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/80 to-transparent backdrop-blur-[6px] z-30"></div>
 
             <!-- Conteúdo/Chamada para Ação Flutuante -->
             <div class="absolute inset-x-0 bottom-16 flex flex-col items-center justify-center z-40 px-margin-mobile">
-                <p class="font-label-caps text-label-caps text-primary mb-4 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm">
+                <p class="hidden md:block font-label-caps text-label-caps text-primary mb-4 tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm">
                     EXCLUSIVIDADE &amp; REFINAMENTO
                 </p>
                 <h1 id="hero-title" class="font-display-lg-mobile text-3xl md:font-display-lg md:text-5xl text-center text-on-surface mb-8 max-w-2xl font-bold leading-tight">
@@ -491,241 +497,305 @@
                 </div>
             </div>
         </section>
+        <!-- About Us Static Section -->
+        <section id="about-us" class="w-full py-12 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative overflow-hidden">
+            <!-- Efeito de blur/gradiente para conectar com a Hero Section -->
+            <div class="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#0e0e0e] via-[#0e0e0e]/80 to-transparent backdrop-blur-[6px] pointer-events-none z-10"></div>
+            
+            <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                
+                <!-- Left: Aesthetic Image Grid -->
+                <div class="lg:col-span-6 relative flex justify-center items-center">
+                    <!-- Background ambient glow behind images -->
+                    <div class="absolute w-72 h-72 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+                    
+                    <!-- Main Salon Interior Image -->
+                    <div class="relative w-[85%] aspect-[4/3] gold-border-subtle overflow-hidden shadow-2xl z-10">
+                        <img 
+                            src="assets/hero_salon.png" 
+                            alt="Interior do Salão Tradicionale" 
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                        />
+                    </div>
+                    
+                    <!-- Overlapping Smaller Portrait Image (Cabelo) -->
+                    <div class="absolute -bottom-8 -left-2 w-[45%] aspect-[3/4] gold-border-subtle overflow-hidden shadow-2xl z-20 hidden sm:block">
+                        <img 
+                            src="assets/gallery_hair.png" 
+                            alt="Cabelo Premium Tradicionale" 
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                        />
+                    </div>
+                    
+                    <!-- Floating abstract gold element/border for extra elegance -->
+                    <div class="absolute -top-6 -right-2 w-32 h-32 border-t-2 border-r-2 border-primary/20 pointer-events-none z-0 hidden sm:block"></div>
+                </div>
+
+                <!-- Right: Content Column -->
+                <div class="lg:col-span-6 flex flex-col justify-center space-y-6 scroll-reveal">
+                    <div>
+                        <p class="font-label-caps text-label-caps text-primary mb-3 tracking-[0.2em] text-xs">SOBRE NÓS</p>
+                        <h2 class="font-headline-md text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-on-surface leading-tight">
+                            Onde a tradição encontra o <span class="text-primary italic">extraordinário</span>
+                        </h2>
+                    </div>
+                    
+                    <p class="font-body-md text-on-surface-variant text-sm md:text-base leading-relaxed">
+                        Desde a nossa fundação, o Tradicionale tem como propósito redefinir a experiência de beleza e bem-estar premium em Curitiba. Criamos mais do que cortes e tratamentos: oferecemos rituais de cuidado personalizados que celebram a singularidade de cada cliente.
+                    </p>
+                    
+                    <p class="font-body-md text-on-surface-variant text-sm leading-relaxed opacity-90">
+                        Em um espaço planejado nos mínimos detalhes para o seu absoluto conforto, nossa equipe de especialistas altamente qualificados utiliza as técnicas mais modernas do mercado e produtos de marcas consagradas internacionalmente. Aqui, o tempo desacelera e a sua transformação é tratada como arte.
+                    </p>
+
+                    <!-- Statistics Grid -->
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-primary/10 max-w-md">
+                        <div class="space-y-1">
+                            <h3 class="font-display-lg text-2xl sm:text-3xl text-primary font-bold">15+</h3>
+                            <p class="font-label-caps text-[9px] sm:text-[10px] text-on-surface-variant tracking-widest uppercase font-semibold">Anos de Excelência</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-display-lg text-2xl sm:text-3xl text-primary font-bold">20k+</h3>
+                            <p class="font-label-caps text-[9px] sm:text-[10px] text-on-surface-variant tracking-widest uppercase font-semibold">Clientes Satisfeitos</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call To Action Button -->
+                    <div class="pt-4">
+                        <a href="#services" class="inline-flex items-center gap-2 text-xs font-label-caps font-bold tracking-widest text-primary hover:text-white transition-colors duration-300 group">
+                            CONHEÇA NOSSOS SERVIÇOS 
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-300">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Services Section -->
-        <section class="pt-8 pb-10 md:py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
-            <div class="scroll-reveal text-center mb-6 md:mb-16">
-                <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface mb-4">Nossos Serviços Premium</h2>
-                <div class="w-20 h-px bg-primary mx-auto"></div>
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-8 md:mt-12">
-                <!-- Service 1 -->
-                <div class="scroll-reveal group service-card flex flex-col relative bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="0">
-                    <button class="bookmark-btn tooltip-container" aria-label="Salvar Hair Styling nos favoritos" data-id="service-hair-styling">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                        <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                    </button>
-                    <div class="aspect-[16/9] md:aspect-[3/4] overflow-hidden">
-                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A close-up shot of a professional hair stylist's hands working on a sleek, high-shine brunette hair transformation. The lighting is cinematic, highlighting the silky texture and golden undertones of the hair. The background is a minimalist black salon interior with warm golden accent lights that create an atmosphere of precision and elite beauty craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgzEPBbBd2x-uRqJUzvK5_AJL-QD8_Z5rdoEZlsocnv-DtfRYutHlEdg9l-e-KVDgxCfJULAIAGHvAJ97zSuQBiYWoRKNQ-3GpZjtjb1TaApWSobJ_mRtUSTB54IR_41xRLk5nCB5piV6oPOrQmf_ZjtahbWXmzWMFEgH-SdRvd9YbvGbrV8hXoxI_TvK7lb7w0SD2UT1j8ZQ9aNOiBJLH2xJSD5RsrOMbIBEmMBY_q-g52r9Pv65UgkHdKnsF7SMY8sPMsuY0aOI"/>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">content_cut</span>
-                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Hair Styling</h3>
-                            </div>
-                            <p class="text-on-surface-variant font-body-md mb-6">Cortes e colorações personalizadas que transcendem tendências, focando na sua identidade única.</p>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="saber-mais-btn font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline" data-service-id="hair-cut">SABER MAIS —</span>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div class="mt-4 pt-4 border-t border-primary/5">
-                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                    <span>ÍNDICE DE SATISFAÇÃO</span>
-                                    <span class="text-primary font-bold">98%</span>
-                                </div>
-                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="98%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="w-full py-12 md:py-16 lg:py-20 bg-surface-container-lowest px-margin-mobile md:px-margin-desktop" id="services">
+            <div class="max-w-container-max mx-auto">
+                <!-- Header Section -->
+                <div class="flex flex-col items-center justify-center space-y-4 text-center mb-8 md:mb-12">
+                    <div class="space-y-2">
+                        <h2 class="font-headline-md text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-on-surface">
+                            Nossos Serviços Premium
+                        </h2>
+                        <p class="max-w-[700px] text-on-surface-variant md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed font-body-md mx-auto">
+                            Experiências exclusivas e tratamentos de alta performance desenvolvidos sob medida para você.
+                        </p>
                     </div>
                 </div>
-                <!-- Service 2 -->
-                <div class="scroll-reveal group service-card flex flex-col relative bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="150">
-                    <button class="bookmark-btn tooltip-container" aria-label="Salvar Skin Care nos favoritos" data-id="service-skin-care">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                        <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                    </button>
-                    <div class="aspect-[16/9] md:aspect-[3/4] overflow-hidden">
-                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A luxurious facial treatment scene showing a client with flawless, dewy skin. A professional hand applies a gold-infused treatment oil. The lighting is soft and ethereal, capturing the reflective quality of the skincare products. The color palette is composed of deep blacks, soft skin tones, and bright gold accents, evoking a sense of calm, science, and extreme luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQ91yETzDM5lAaLBMC9DeClMR4plw2pzW7gFvqhJBWYNTEs1WTSpTgtHigFfg8EdFbq6TmGZGY8AAxWB3tA8dZvAg4dou9E3RUduAhD-U51lbt6GJzp_PcsikJfz7IKAT1q5ZUWKukghIQZv1kEEgda6rlmC1u822VOzqvDb9zHL5qLZQbEoTMJlsaYocgB2H6lMoUm7rrCQa4KDwE7Lb79Mj-6JrXCHkF_wqqFHSSI8gobCnmem87EJiDoluW1M-d9Eg_EJ8qqQ"/>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">face</span>
-                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Skin Care</h3>
-                            </div>
-                            <p class="text-on-surface-variant font-body-md mb-6">Protocolos avançados de revitalização com tecnologia de ponta e ativos de luxo para uma pele radiante.</p>
+
+                <!-- Animated Grid Section -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 justify-items-center">
+                    <!-- Service 1: Hair Styling -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="corte-feminino"
+                        data-delay="0"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_hair.jpg"
+                                alt="Hair Styling service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="saber-mais-btn font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline" data-service-id="facial">SABER MAIS —</span>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div class="mt-4 pt-4 border-t border-primary/5">
-                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                    <span>ÍNDICE DE SATISFAÇÃO</span>
-                                    <span class="text-primary font-bold">95%</span>
-                                </div>
-                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="95%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
-                                </div>
-                            </div>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Hair Styling
+                        </span>
+                    </a>
+
+                    <!-- Service 2: Mechas & Coloração -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="mechas-medios"
+                        data-delay="100"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_highlights.jpg"
+                                alt="Mechas & Coloração service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                    </div>
-                </div>
-                <!-- Service 3 -->
-                <div class="scroll-reveal group service-card flex flex-col relative bg-surface-container border border-primary/10 transition-all duration-500 hover:border-primary/40" data-delay="300">
-                    <button class="bookmark-btn tooltip-container" aria-label="Salvar Makeup Artistry nos favoritos" data-id="service-makeup-artistry">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                        <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                    </button>
-                    <div class="aspect-[16/9] md:aspect-[3/4] overflow-hidden">
-                        <img class="service-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An artistic focus on high-end makeup application, showing a makeup artist applying fine details to a model's eye. The makeup features subtle metallic gold flakes and perfect contouring. The scene is shot in a high-contrast editorial style, with deep shadows and sharp, focused lighting that creates a feeling of meticulous artistry and glamour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9XtyRiLj1kdsYt7TCKNLC6DwHXRIJ7ZqWxG-CAsiZcyJCVmobYxnnij6H3Ro8jsepNhB_-yfq8OlyCxTTq4pQadGRC9V7Ap4sWvVZWpoChoJietUZCsw8bDSguODLTPdA-qZl4322YwyBXVwJI3skpv5lr_2K2h3qWkEuLJHUGDFOSOZZl_QrsV0piLZfgNQgOs54DX5Q5vbZFKUSAcPct_ouWPdRn2hlm92IL4uTOIW8U9kueHUkrrQaSDd6qRwTNnA0AJP2Pt4"/>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
-                                <h3 class="font-headline-md text-body-lg text-on-surface font-bold">Makeup Artistry</h3>
-                            </div>
-                            <p class="text-on-surface-variant font-body-md mb-6">Maquiagem editorial e social que ressalta seus traços mais belos com acabamento impecável.</p>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Mechas & Coloração
+                        </span>
+                    </a>
+
+                    <!-- Service 3: Makeup Artistry -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="makeup"
+                        data-delay="200"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_makeup.jpg"
+                                alt="Makeup Artistry service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="saber-mais-btn font-label-caps text-[10px] text-primary tracking-widest cursor-pointer hover:underline" data-service-id="makeup">SABER MAIS —</span>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div class="mt-4 pt-4 border-t border-primary/5">
-                                <div class="flex justify-between items-center text-[10px] font-label-caps tracking-wider text-on-surface-variant/70 mb-2">
-                                    <span>ÍNDICE DE SATISFAÇÃO</span>
-                                    <span class="text-primary font-bold">97%</span>
-                                </div>
-                                <div class="h-1 bg-[#252525] rounded-full overflow-hidden" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="scroll-progress-fill h-full rounded-full bg-primary" data-width="97%" style="width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
-                                </div>
-                            </div>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Makeup Artistry
+                        </span>
+                    </a>
+
+                    <!-- Service 4: Unhas em Gel & Spa -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="alongamento-gel"
+                        data-delay="300"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_nails.jpg"
+                                alt="Unhas em Gel & Spa service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Gallery Section -->
-        <section class="bg-surface-container-lowest py-10 md:py-section-gap" id="portfolio">
-            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-                <div class="scroll-reveal flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-6">
-                    <div class="max-w-2xl">
-                        <p class="font-label-caps text-label-caps text-primary mb-4">NOSSO PORTFÓLIO</p>
-                        <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface">Resultados Impecáveis</h2>
-                    </div>
-                    <div class="tooltip-container w-full md:w-72 h-16">
-                        <button class="led-button" id="gallery-ver-todos-btn">
-                            <span class="led-button-content">
-                                VER TODOS OS LOOKS
-                            </span>
-                        </button>
-                        <span class="tooltip-content">Ver portfólio completo</span>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="scroll-reveal space-y-4" data-delay="0">
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 1 nos favoritos" data-id="gallery-item-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A professional fashion portrait of a woman with a sleek blonde bob, styled with high precision. The lighting is stark and dramatic, typical of high-end beauty magazines. The background is a flat obsidian black, allowing the light-colored hair and soft golden accessories to pop with maximum contrast and elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeEH8q5mo61pu3U1_dDfRxBzXKLerxgd0DOtx4Wa9RKtQgnISJhqVj2zv7m9qyYj_QZOheSOwy3D5Lq6RKmcZGlhcSrKevfRwQKOQnfsRepIK-gviLxND3Kg0HNCGbdu_syD1yzPDIln0JB8XX9xXXgGJ9SbDm_pYxL5sTnJgUubyYyOympykDrDDuRVqV0AtuUn1of4V8-3sVPxmerqGFjkgXJe_4ITDd8Yx9zFuS9HWa0iqY8YtrSAcq75FTKhNMxjrzinTnwNo"/>
-                            </div>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Unhas em Gel & Spa
+                        </span>
+                    </a>
+
+                    <!-- Service 5: Sobrancelhas & Cílios -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="design-premium"
+                        data-delay="400"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_eyebrows.jpg"
+                                alt="Sobrancelhas & Cílios service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 2 nos favoritos" data-id="gallery-item-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Close-up of a high-end beauty treatment involving luxury serums and gold-leaf details on a client's face. The mood is clinical yet opulent, with cool surgical lighting balanced by warm amber highlights. Every drop of product is captured in high resolution, emphasizing the quality and exclusivity of the treatment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhd8bESCSkm9BHXVdCCRvL0j1aDSvT5ekSdnCDZ3sOxMel-tpXktHC6cQ_7Gw67jHJaMB7_u5GOoZ69llvcghxuKOVaaH7wQO2F0Itoi9UXmRKX0rXEk4Hy2AmNmoKF5KaIFISAd6GyuO1U2jMf8RjvWsy3tjjf4uzDOixxi1TclqmcCI5_9Wvb2oGrZv-3KfJ8z6EsbXvQBqCjqR0FlTOFSNalGX7TjzChwL7HWlyJSX7x5JmPUpVDounJmR68G4qOKETUMcjCw"/>
-                            </div>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Sobrancelhas & Cílios
+                        </span>
+                    </a>
+
+                    <!-- Service 6: Estética & Depilação -->
+                    <a
+                        href="#services"
+                        class="saber-mais-btn scroll-reveal group flex flex-col items-center justify-start gap-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:-translate-y-1.5"
+                        data-service-id="laser-axilas"
+                        data-delay="500"
+                    >
+                        <div class="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 bg-surface-container-lowest rounded-full overflow-hidden">
+                            <img
+                                src="assets/icon_laser.jpg"
+                                alt="Estética & Depilação service icon"
+                                width="100"
+                                height="100"
+                                class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 clean-service-icon"
+                            />
                         </div>
-                    </div>
-                    <div class="scroll-reveal space-y-4 md:pt-8" data-delay="150">
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 3 nos favoritos" data-id="gallery-item-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A striking portrait of a woman with voluminous dark curls and bold gold-tone makeup. The shot is an extreme close-up focusing on the texture of her hair and the metallic sheen of her eyelids. The lighting is warm and directional, creating deep shadows and highlighting the luxurious skin texture in a minimalist, dark studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2T8bM-7mlt52Iw4gnlPUjbMbz4X0ql7CGlcP1KX8RjcMRvsYv6NspxyBBIE0nGmUJ7KZzxUC-hBadyNRGBsr6f-OYfoCwZPVPAdaCc-3iY96ZMH-qBqZ2nt5oPYat9u_lqh20VxP5YVrWgyVk7VabrgaE6xP_GtEQMXQvPe_oNRxyObzgKejiXaSN1DmnO_MSS12eof--j6RI_67bkGytn100hivm9G7oVeEGntcJvLS3EbJwPGM_hCz4LLoudUYMT9UcB5pqYL4"/>
-                            </div>
-                        </div>
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 4 nos favoritos" data-id="gallery-item-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Professional hair coloring results showing a perfect transition from dark roots to honey-gold highlights. The hair is styled in loose, glamorous waves that catch the soft overhead light. The overall aesthetic is one of expensive grooming and flawless execution, set against a dark, minimalist salon backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJq9zeLaWumJe8LGe_bNe7YY3aDz61xs1ii8TGVih9RcbMRug85O8aR52xNMJ_kS8gOXSCUowaajblgxccz6ovo3k4RfD1VufuVU2mrOCrCIHlfIRyli82MSbCf8AY0xnzR7CLZ84GvJMeLFzeSOS8zjPkdP3V_Nu1dRnz3-T4LmzHlZzSSOWKWa9OB7SXpysdsQ5iqRH9EKGLy_926xMKEBGHRllgV4AR5E_WwvDD7iBNAcjJVoUYZuWksiCCf5x1WPuh2isxtTg"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="scroll-reveal space-y-4" data-delay="300">
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 5 nos favoritos" data-id="gallery-item-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A profile view of a model with an intricate, artistic updo. The hair is woven with fine gold threads that shimmer under a single spotlight. The high-contrast black and white photography style with golden accents emphasizes the sculptural quality of the hairstyling and the elite nature of the salon's services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QxiJT8nDOr4QDHpteeFV_1_PCyv3ALYdAkuavkx5ZhpWqC0YchRBRNM9Vttnuv_VbTPMgy_sEUItMzlD4fV6Su8qJRPEg2HM9HCJwsjkh7ahUIWhypwHzHcQMKHxMBcyxJ714XAg_8vovoQ7fRylbt5pfGd4W-ChSvpHXefgMIvW90qzo6g6kukAyPqacotrzdZcZMeBUWrzY7TB4P40vPQFrZ_SkdKrO22LbZW_EuiA2Yoyxa6wfbi7Muc4ky6IBnA_ZUbeLcQ"/>
-                            </div>
-                        </div>
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 6 nos favoritos" data-id="gallery-item-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="An editorial shot of high-fashion makeup featuring deep red lips and golden highlighter. The skin is matte and flawless. The lighting is hard, creating a dramatic, confident look that reflects a high-end beauty salon's capability for social events and fashion-forward clients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr7Qt-P-WCuAleq6r8mNfzDGxmbC80u1Z_K36ntLKU0WOMsbh26hw4FUllVxLckILajTJm5zs625QUHOfz4f79ll8shAi3ehK6mAog5zko9zbZxV55Xltdg0i9paF4meE54O9z3siw-7Jk4ofMZnYFHkoaqYx5p0L3dapHM1cPsaBqk7JF2DsDKH1afK7dHkaF1VJAt4f6zu_AXF5pEYvcv1NVbVBEcltbqKJW0LudjKOve0DJLnPG_7gCDIJ_uAXDgEhx3Ij4XZg"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="scroll-reveal space-y-4 md:pt-12" data-delay="450">
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 7 nos favoritos" data-id="gallery-item-7">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A serene moment of a woman receiving a scalp massage during a luxury hair treatment. Her eyes are closed, and the lighting is a soft, warm amber glow that fills the dark space. The focus is on the peaceful experience and the high-touch service provided by the salon, emphasizing relaxation and premium care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfYTLapHW3huJ59BR1dQgCkppTYNrIn0lxtRmJjm3jEZ-FVMschH9hW_AY3MzWi6iN4NONrGmFTGqu8kceDkEyV3y0K7X30MOT0OI7glies0T-DBtF2pim_8jWrj0v4SCqClYeaQTo16ocTW97wlLXGWB7e12fRuB0YraxnsqdYVnlWyuVyRrTX0mVPFhlPe4nQFCAzl1QigdkoomUR7s3scUHpeR33n62vuG1nxVccsWWV5yUiOPiyvUoLhfH4lWzozaltwk2UrA"/>
-                            </div>
-                        </div>
-                        <div class="relative group gold-border-subtle">
-                            <button class="bookmark-btn tooltip-container" aria-label="Salvar visual 8 nos favoritos" data-id="gallery-item-8">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bookmark-icon"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                                <span class="tooltip-content tooltip-left">Salvar nos favoritos</span>
-                            </button>
-                            <div class="overflow-hidden">
-                                <img class="w-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Showcasing high-end salon tools—gold-plated scissors and brushes—resting on a dark marble surface. The lighting is focused, casting long shadows and highlighting the metallic gleam of the tools. This image conveys the salon's commitment to precision, quality equipment, and a luxurious physical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXFg5u9reSLFkmqVAdRYkIz1bXHOs2HP90s_oOiJMSXK5dzSJG7ml-2Rb4J5zdcChl2tJnWyvpkySIll7JvH_fw05IzV557ZzxtVhixFG8w-wLJjJ_sUmnr3oBSbLTsJW_q98SXpOxpdBxIIJkhPlyRer6aRAzrPDm7PjJCNXnk20tqOaVWg76JUfJyMsMa522PAGfWHUPvgyr7d90QXcum0i06L6EBtlUe0LtLSi-5Jd7vPgpBaYyDrtOYmrXe44Oj7OV-WyjLdM"/>
-                            </div>
-                        </div>
-                    </div>
+                        <span class="text-sm font-medium text-on-surface transition-colors duration-300 group-hover:text-primary font-body-md">
+                            Estética & Depilação
+                        </span>
+                    </a>
                 </div>
             </div>
         </section>
-        <!-- About Us Section -->
-        <section class="py-10 md:py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden" id="about">
-            <div class="flex flex-col md:flex-row items-center gap-gutter">
-                <div class="scroll-reveal md:w-1/2 relative" data-delay="0">
-                    <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 border border-primary/20 z-0"></div>
-                    <img class="relative z-10 w-full aspect-square object-cover gold-border-subtle" data-alt="Interior of a luxury beauty salon 'Tradicionale'. The space features black marble floors, brushed gold wall panels, and large back-lit mirrors. The lighting is sophisticated and zoned, with spotlights on styling stations and soft ambient lighting in the waiting area. The overall atmosphere is silent, high-end, and architectural, resembling a luxury hotel lobby or an art gallery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRA95CI6wn8T-pZfh6weLWMrg44ZjgkcFDthftaN-4HDdojQAn6PqATmzFmtw967f3QVeKK4RRbpwxNXvKZpsL_QaUuitv2hs_Z-1wIqj-aIrqwz449266xVED5KMhViC6GSU9pqwo79lReuKRTj9G7nSmXNqBs61_Jyo8HMm5-448skfVpiDow-aFNpcAWczE0NbAWpbWKn1pI7pj32IYVmdT6LckdU6FZ4kqE1suykfmWEEOC177BtIZ6-ek7wTiGKBkc51CZt0"/>
+        <!-- About Us Section with Zoom Parallax -->
+        <section id="about" class="relative h-[300vh] w-full select-none bg-surface-container-lowest">
+            <div class="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
+                <!-- Fundo igual ao da primeira seção (rotacionado 180° para brilho dourado ficar abaixo) -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none">
+                    <img class="w-full h-full object-cover opacity-80 rotate-180" src="assets/hero_bg.png" alt="Fundo abstrato de luxo Tradicionale"/>
+                    <div class="absolute inset-0 bg-radial-gradient from-[#e9c176]/10 to-transparent mix-blend-screen opacity-50"></div>
+                    <!-- Fade suave para cinza no topo para conectar perfeitamente com a seção de serviços, sem artefatos de borda -->
+                    <div class="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-[#0e0e0e] via-[#0e0e0e]/80 to-transparent"></div>
                 </div>
-                <div class="scroll-reveal md:w-1/2 md:pl-16" data-delay="200">
-                    <p class="font-label-caps text-label-caps text-primary mb-6 tracking-[0.3em]">NOSSA ESSÊNCIA</p>
-                    <h2 class="font-headline-md text-headline-md md:text-display-lg text-on-surface mb-8 leading-tight">Excelência em cada detalhe, Luxo em cada toque.</h2>
-                    <p class="text-body-lg text-on-surface-variant mb-8">
-                        No Tradicionale, acreditamos que a beleza é uma manifestação da alma. Nossa missão é proporcionar uma experiência sensorial completa, onde o tempo desacelera e a sua transformação é conduzida pelos melhores specialists do país.
-                    </p>
-                    <p class="text-body-md text-on-surface-variant/80 mb-10">
-                        Cada serviço é uma curadoria de luxo, utilizando produtos das mais prestigiadas marcas mundiais e técnicas exclusivas que garantem um resultado impecável e duradouro.
-                    </p>
-                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-primary/10">
-                        <div>
-                            <p class="font-display-lg text-primary text-headline-md mb-1">15+</p>
-                            <p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">ANOS DE HISTÓRIA</p>
-                        </div>
-                        <div>
-                            <p class="font-display-lg text-primary text-headline-md mb-1">20k</p>
-                            <p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">CLIENTES SATISFEITOS</p>
+
+                <!-- Camada de Confetes Dourados (Surgindo de baixo para cima) -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none">
+                    <canvas id="parallax-confetti-canvas" class="w-full h-full"></canvas>
+                </div>
+
+                <!-- Image 0 (Central - Salon Interior) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="4">
+                    <div class="relative h-[25vh] w-[25vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/hero_salon.png" alt="Salão Tradicionale" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 1 (Hair Bob) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="5">
+                    <div class="relative -top-[30vh] left-[5vw] h-[30vh] w-[35vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/gallery_hair.png" alt="Cabelo Premium" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 2 (Facial/Estética) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="6">
+                    <div class="relative -top-[10vh] -left-[25vw] h-[45vh] w-[20vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/gallery_makeup.png" alt="Estética Facial" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 3 (Makeup curls) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="5">
+                    <div class="relative left-[27.5vw] h-[25vh] w-[25vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/gallery_nails.png" alt="Maquiagem Editorial" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 4 (Balayage) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="6">
+                    <div class="relative top-[27.5vh] left-[5vw] h-[25vh] w-[20vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/service_highlights.png" alt="Mechas Balayage" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 5 (Design) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="8">
+                    <div class="relative top-[27.5vh] -left-[22.5vw] h-[25vh] w-[30vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/service_eyebrows.png" alt="Design Visagista" class="h-full w-full object-cover">
+                    </div>
+                </div>
+                <!-- Image 6 (Scalp Therapy) -->
+                <div class="zoom-image-container absolute top-0 flex h-full w-full items-center justify-center will-change-transform" data-scale-max="9">
+                    <div class="relative top-[22.5vh] left-[25vw] h-[15vh] w-[15vw] gold-border-subtle overflow-hidden shadow-2xl">
+                        <img src="assets/service_laser.png" alt="Depilação & Estética" class="h-full w-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Text Overlay (Fades in over zoomed salon photo) -->
+                <div id="essence-text-overlay" class="absolute inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center opacity-0 invisible z-30 transition-all duration-300 pointer-events-none">
+                    <div class="max-w-3xl text-center px-margin-mobile">
+                        <p class="font-label-caps text-label-caps text-primary mb-4 md:mb-6 tracking-[0.3em] text-xs md:text-sm">NOSSA ESSÊNCIA</p>
+                        <h2 class="font-headline-md text-xl min-[480px]:text-2xl md:text-display-lg text-on-surface mb-4 md:mb-8 leading-tight">Excelência em cada detalhe, Luxo em cada toque.</h2>
+                        <p class="text-xs min-[480px]:text-sm md:text-body-lg text-on-surface-variant mb-4 md:mb-8 max-w-2xl mx-auto leading-relaxed">
+                            No Tradicionale, acreditamos que a beleza é uma manifestação da alma. Nossa missão é proporcionar uma experiência sensorial completa, onde o tempo desacelera e a sua transformação é conduzida pelos melhores specialists do país.
+                        </p>
+                        <p class="hidden md:block text-sm text-on-surface-variant/80 mb-8 max-w-xl mx-auto leading-relaxed">
+                            Cada serviço é uma curadoria de luxo, utilizando produtos das mais prestigiadas marcas mundiais e técnicas exclusivas que garantem um resultado impecável e duradouro.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 md:gap-8 pt-4 md:pt-8 border-t border-primary/10 max-w-sm mx-auto">
+                            <div>
+                                <p class="text-lg md:text-headline-md font-display-lg text-primary mb-1">15+</p>
+                                <p class="font-label-caps text-[9px] md:text-[10px] text-on-surface-variant tracking-widest">ANOS DE HISTÓRIA</p>
+                            </div>
+                            <div>
+                                <p class="text-lg md:text-headline-md font-display-lg text-primary mb-1">20k</p>
+                                <p class="font-label-caps text-[9px] md:text-[10px] text-on-surface-variant tracking-widest">CLIENTES SATISFEITOS</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -743,7 +813,7 @@
                 </p>
                 <div class="scroll-reveal flex flex-col md:flex-row gap-6 justify-center items-center mb-8 md:mb-16" data-delay="300">
                     <div class="tooltip-container w-full md:w-72 h-16">
-                        <a class="led-button" href="https://wa.me/5511951973097" target="_blank">
+                        <a class="led-button" href="https://wa.me/5541951973097" target="_blank">
                             <span class="led-button-content">
                                 <span class="material-symbols-outlined text-[16px]">chat</span> WHATSAPP
                             </span>
@@ -763,7 +833,7 @@
                     <div class="scroll-reveal flex flex-col items-center" data-delay="400">
                         <span class="material-symbols-outlined text-primary mb-4">location_on</span>
                         <p class="font-label-caps text-[10px] tracking-widest mb-2">LOCALIZAÇÃO</p>
-                        <p class="font-body-md">Av. da Elegância, 1000 - Jardins, SP</p>
+                        <p class="font-body-md">Av. Pres. Arthur Bernardes, 286 - Santa Quitéria, Curitiba - PR</p>
                     </div>
                     <div class="scroll-reveal flex flex-col items-center" data-delay="500">
                         <span class="material-symbols-outlined text-primary mb-4">schedule</span>
@@ -773,7 +843,7 @@
                     <div class="scroll-reveal flex flex-col items-center" data-delay="600">
                         <span class="material-symbols-outlined text-primary mb-4">call</span>
                         <p class="font-label-caps text-[10px] tracking-widest mb-2">CONTATO</p>
-                        <p class="font-body-md">+55 (11) 95197-3097</p>
+                        <p class="font-body-md">+55 (41) 95197-3097</p>
                     </div>
                 </div>
             </div>
@@ -784,13 +854,13 @@
         <div class="flex flex-col items-center gap-base px-margin-mobile text-center max-w-container-max mx-auto">
             <span class="font-display-lg-mobile text-3xl md:text-4xl tracking-tighter text-primary mb-4 font-bold">TRADICIONALE</span>
             <div class="flex flex-wrap justify-center gap-gutter mb-8">
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#services">Services</a>
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#portfolio">Portfolio</a>
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#about">Contact</a>
-                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Privacy</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#about-us">Sobre Nós</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#services">Serviços</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#about">Essência</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Privacidade</a>
             </div>
             <div class="flex gap-6 mb-8">
-                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/salaotradicionalecwb/" target="_blank">
                     <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
                 </a>
                 <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
@@ -838,7 +908,8 @@
                         <span class="material-symbols-outlined text-lg md:text-xl">content_cut</span>
                         <span>Combos</span>
                     </button>
-                    <button class="dashboard-tab-btn flex-1 flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 px-1 py-1.5 md:px-4 md:py-3 rounded-lg text-[9px] min-[375px]:text-[10px] md:text-xs font-label-caps font-bold text-on-surface-variant hover:text-[#e9c176] hover:bg-white/5 transition-all whitespace-nowrap" data-tab="tab-booking">
+                    <!-- Hidden booking tab option to disable booking form -->
+                    <button class="dashboard-tab-btn hidden flex-1 flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-3 px-1 py-1.5 md:px-4 md:py-3 rounded-lg text-[9px] min-[375px]:text-[10px] md:text-xs font-label-caps font-bold text-on-surface-variant hover:text-[#e9c176] hover:bg-white/5 transition-all whitespace-nowrap" data-tab="tab-booking">
                         <span class="material-symbols-outlined text-lg md:text-xl">calendar_month</span>
                         <span>Agendar</span>
                     </button>
@@ -867,75 +938,721 @@
                         <div class="lg:col-span-3 space-y-4">
                             <div>
                                 <h3 class="text-xl md:text-2xl font-display-lg text-white">Monte seu Combo Premium</h3>
-                                <p class="text-xs text-on-surface-variant mt-1">Selecione 2 serviços para ganhar 10% de desconto, ou 3+ para ganhar 15%.</p>
-                            </div>
-                            <div class="space-y-3 max-h-[50vh] lg:max-h-[45vh] overflow-y-auto pr-2 scrollbar-thin pb-24 lg:pb-0">
-                                <!-- Hair styling -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="hair-cut" data-name="Corte & Escova Customizada" data-price="180">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Corte & Escova Customizada</p>
-                                            <p class="text-[11px] text-on-surface-variant">Design de corte personalizado.</p>
+                                <p class="text-xs text-on-surf                            <div class="space-y-4 max-h-[50vh] lg:max-h-[45vh] overflow-y-auto pr-2 scrollbar-thin pb-24 lg:pb-0">
+                                <!-- Categoria: Cabelo & Mechas -->
+                                <div class="sticky top-0 bg-[#131313] py-2 z-10 border-b border-[#e9c176]/20 mb-2">
+                                    <span class="text-[10px] font-label-caps text-[#e9c176] tracking-widest font-bold">💇 CABELO &amp; MECHAS (FEMININO)</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="corte-feminino" data-name="Corte Feminino" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Corte Feminino</p>
+                                                <p class="text-[10px] text-on-surface-variant">Design e estilização profissional.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 180</span>
-                                </label>
-                                <!-- Hair color -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="hair-color" data-name="Coloração Premium & Mechas" data-price="450">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Coloração Premium & Mechas</p>
-                                            <p class="text-[11px] text-on-surface-variant">Balayage ou coloração com marcas de luxo.</p>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="corte-franja" data-name="Corte de Franja" data-price="25">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Corte de Franja</p>
+                                                <p class="text-[10px] text-on-surface-variant">Ajuste e modelagem rápida da franja.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 450</span>
-                                </label>
-                                <!-- Hair therapy -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="hair-therapy" data-name="Terapia Capilar & Nutrição" data-price="250">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Terapia Capilar & Nutrição</p>
-                                            <p class="text-[11px] text-on-surface-variant">Tratamento reconstrutor intensivo Kérastase.</p>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 25</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="escova-media" data-name="Escova Média" data-price="60">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Escova Média</p>
+                                                <p class="text-[10px] text-on-surface-variant">Secagem e modelagem para cabelos médios.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 250</span>
-                                </label>
-                                <!-- Facial aesthetics -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="facial" data-name="Limpeza de Pele & Glow Facial" data-price="220">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Limpeza de Pele & Glow Facial</p>
-                                            <p class="text-[11px] text-on-surface-variant">Revitalização facial e extração de impurezas.</p>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 60</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="escova-medio-longa" data-name="Escova Médio Longa" data-price="70">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Escova Médio Longa</p>
+                                                <p class="text-[10px] text-on-surface-variant">Secagem e modelagem para cabelos médio-longos.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 220</span>
-                                </label>
-                                <!-- Makeup -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="makeup" data-name="Maquiagem Social / Festa" data-price="300">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Maquiagem Social / Festa</p>
-                                            <p class="text-[11px] text-on-surface-variant">Makeup de alto padrão com fixação premium.</p>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 70</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="escova-longa" data-name="Escova Longa" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Escova Longa</p>
+                                                <p class="text-[10px] text-on-surface-variant">Secagem e modelagem para cabelos compridos.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 300</span>
-                                </label>
-                                <!-- Nails -->
-                                <label class="dashboard-service-item flex items-center justify-between p-4 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
-                                    <div class="flex items-center gap-4">
-                                        <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="nails" data-name="Manicure & Pedicure Spa" data-price="120">
-                                        <div>
-                                            <p class="font-bold text-white text-sm">Manicure & Pedicure Spa</p>
-                                            <p class="text-[11px] text-on-surface-variant">Cuidados profundos com esmaltação premium.</p>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="escova-muito-longa" data-name="Escova Muito Longa" data-price="90">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Escova Muito Longa</p>
+                                                <p class="text-[10px] text-on-surface-variant">Secagem e modelagem para cabelos super longos.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span class="font-bold text-[#e9c176] text-sm">R$ 120</span>
-                                </label>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 90</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="escova-mega-hair" data-name="Escova Mega Hair" data-price="100">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Escova Mega Hair</p>
+                                                <p class="text-[10px] text-on-surface-variant">Secagem especializada para cabelos com aplique.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 100</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="lavagem-especial" data-name="Lavagem Especial" data-price="30">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Lavagem Especial</p>
+                                                <p class="text-[10px] text-on-surface-variant">Higienização profunda com massagem capilar.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 30</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="hidratacao" data-name="Hidratação Profunda" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Hidratação Profunda</p>
+                                                <p class="text-[10px] text-on-surface-variant">Nutrição intensa e brilho aos fios.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="reconstrucao" data-name="Reconstrução Capilar" data-price="120">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Reconstrução Capilar</p>
+                                                <p class="text-[10px] text-on-surface-variant">Tratamento reconstrutor intensivo de queratina.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 120</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="selagem" data-name="Selagem / Cauterização" data-price="180">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Selagem / Cauterização</p>
+                                                <p class="text-[10px] text-on-surface-variant">Fechamento de cutículas e reconstrução térmica.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 180</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="botox-capilar" data-name="Botox Capilar" data-price="150">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Botox Capilar</p>
+                                                <p class="text-[10px] text-on-surface-variant">Alinhamento térmico e redução de frizz.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 150</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="progressiva" data-name="Progressiva Redutora" data-price="250">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Progressiva Redutora</p>
+                                                <p class="text-[10px] text-on-surface-variant">Alinhamento definitivo e liso duradouro.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 250</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="relaxamento" data-name="Relaxamento Capilar" data-price="150">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Relaxamento Capilar</p>
+                                                <p class="text-[10px] text-on-surface-variant">Soltura e controle de volume de cachos.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 150</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="coloracao" data-name="Coloração" data-price="150">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Coloração</p>
+                                                <p class="text-[10px] text-on-surface-variant">Aplicação completa de tintura premium.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 150</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="aplicacao-coloracao" data-name="Aplicação de Coloração" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Aplicação de Coloração</p>
+                                                <p class="text-[10px] text-on-surface-variant">Mão de obra para aplicação de tinta trazida pelo cliente.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="mechas-curtos" data-name="Mechas Cabelos Curtos" data-price="450">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Mechas Cabelos Curtos</p>
+                                                <p class="text-[10px] text-on-surface-variant">Iluminação premium para comprimentos curtos.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 450</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="mechas-medios" data-name="Mechas Cabelos Médios" data-price="550">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Mechas Cabelos Médios</p>
+                                                <p class="text-[10px] text-on-surface-variant">Iluminação premium para comprimentos médios.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 550</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="mechas-medio-longo" data-name="Mechas Cabelos Médio Longo" data-price="650">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Mechas Cabelos Médio Longo</p>
+                                                <p class="text-[10px] text-on-surface-variant">Iluminação para cabelos de tamanho médio-longo.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 650</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="mechas-longos" data-name="Mechas Cabelos Longos" data-price="750">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Mechas Cabelos Longos</p>
+                                                <p class="text-[10px] text-on-surface-variant">Iluminação premium para comprimentos longos.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 750</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="mechas-super-longos" data-name="Mechas Cabelos Super Longos" data-price="850">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Mechas Cabelos Super Longos</p>
+                                                <p class="text-[10px] text-on-surface-variant">Iluminação premium para cabelos extras compridos.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 850</span>
+                                    </label>
+                                </div>
+ 
+                                <!-- Categoria: Unhas, Manicure & Pedicure -->
+                                <div class="sticky top-0 bg-[#131313] py-2 z-10 border-b border-[#e9c176]/20 mb-2 mt-4">
+                                    <span class="text-[10px] font-label-caps text-[#e9c176] tracking-widest font-bold">💅 UNHAS, MANICURE &amp; PEDICURE</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="alongamento-gel" data-name="Alongamento em Gel" data-price="150">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Alongamento em Gel</p>
+                                                <p class="text-[10px] text-on-surface-variant">Alongamento luxuoso com aspecto natural.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 150</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="manutencao-gel" data-name="Manutenção Alongamento Gel" data-price="110">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Manutenção Alongamento Gel</p>
+                                                <p class="text-[10px] text-on-surface-variant">Manutenção do alongamento de gel.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 110</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="blindagem-gel-premium" data-name="Blindagem (Esmaltação Gel)" data-price="140">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Blindagem (Esmaltação Gel)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Proteção em gel com acabamento esmaltado gel.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 140</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="blindagem-normal" data-name="Blindagem (Esmaltação Normal)" data-price="120">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Blindagem (Esmaltação Normal)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Proteção em gel com esmaltação comum.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 120</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="esmaltacao-gel-mao" data-name="Esmaltação Gel (Mão)" data-price="60">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Esmaltação Gel (Mão)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Esmaltação em gel curada em cabine LED.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 60</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="esmaltacao-gel-pe" data-name="Esmaltação Gel (Pé)" data-price="70">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Esmaltação Gel (Pé)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Esmaltação em gel para pés duradoura.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 70</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="esmaltacao-gel-mao-pe" data-name="Esmaltação Gel (Mão e Pé)" data-price="110">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Esmaltação Gel (Mão e Pé)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Esmaltação em gel completa das mãos e pés.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 110</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="manicure-comum-cera" data-name="Manicure Comum na Cera" data-price="35">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Manicure Comum na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Cuidado básico e esmaltação comum das unhas.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 35</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="pedicure-comum" data-name="Pedicure Comum" data-price="45">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Pedicure Comum</p>
+                                                <p class="text-[10px] text-on-surface-variant">Limpeza, lixamento e esmaltação dos pés.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 45</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="pe-spa-manicure" data-name="Pé de Spa com Manicure" data-price="75">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Pé de Spa com Manicure</p>
+                                                <p class="text-[10px] text-on-surface-variant">Tratamento relaxante para pés aliado à manicure.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 75</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="esmaltacao-gel-spa-pe" data-name="Esmaltação Gel c/ Pé de Spa" data-price="125">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Esmaltação Gel c/ Pé de Spa</p>
+                                                <p class="text-[10px] text-on-surface-variant">Esmaltação gel duradoura com ritual de spa nos pés.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 125</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="spa-pes" data-name="Spa dos Pés" data-price="50">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Spa dos Pés</p>
+                                                <p class="text-[10px] text-on-surface-variant">Esfoliação, hidratação profunda e massagem nos pés.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 50</span>
+                                    </label>
+                                </div>
+ 
+                                <!-- Categoria: Maquiagem & Sobrancelhas -->
+                                <div class="sticky top-0 bg-[#131313] py-2 z-10 border-b border-[#e9c176]/20 mb-2 mt-4">
+                                    <span class="text-[10px] font-label-caps text-[#e9c176] tracking-widest font-bold">💄 MAQUIAGEM &amp; DESIGN</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="design-simples" data-name="Design Sobrancelha Simples" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Design Sobrancelha Simples</p>
+                                                <p class="text-[10px] text-on-surface-variant">Remoção de excessos e alinhamento básico.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="design-premium" data-name="Design Sobrancelhas Premium" data-price="75">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Design Sobrancelhas Premium</p>
+                                                <p class="text-[10px] text-on-surface-variant">Design visagista premium com aplicação de hidratante.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 75</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="henna" data-name="Aplicação de Henna" data-price="25">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Aplicação de Henna</p>
+                                                <p class="text-[10px] text-on-surface-variant">Preenchimento temporário e realce das sobrancelhas.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 25</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="micro-sobrancelha" data-name="Micropigmentação Sobrancelha" data-price="350">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Micropigmentação Sobrancelha</p>
+                                                <p class="text-[10px] text-on-surface-variant">Pigmentação semi-permanente fio a fio.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 350</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="micro-labial" data-name="Micropigmentação Labial" data-price="350">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Micropigmentação Labial</p>
+                                                <p class="text-[10px] text-on-surface-variant">Efeito revitalizante e cor natural para os lábios.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 350</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="makeup-express" data-name="Maquiagem Express" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Maquiagem Express</p>
+                                                <p class="text-[10px] text-on-surface-variant">Produção rápida e natural para o dia a dia.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="makeup-sem-cilios" data-name="Maquiagem Sem Cílios" data-price="140">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Maquiagem Sem Cílios</p>
+                                                <p class="text-[10px] text-on-surface-variant">Produção social completa, sem cílios postiços.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 140</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="makeup" data-name="Maquiagem Com Cílios" data-price="165">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Maquiagem Com Cílios</p>
+                                                <p class="text-[10px] text-on-surface-variant">Produção social festa com cílios inclusos.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 165</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="aplicacao-cilios" data-name="Aplicação Cílios Postiços" data-price="35">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Aplicação Cílios Postiços</p>
+                                                <p class="text-[10px] text-on-surface-variant">Mão de obra e colagem profissional de cílios.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 35</span>
+                                    </label>
+                                </div>
+ 
+                                <!-- Categoria: Depilação & Estética Feminina -->
+                                <div class="sticky top-0 bg-[#131313] py-2 z-10 border-b border-[#e9c176]/20 mb-2 mt-4">
+                                    <span class="text-[10px] font-label-caps text-[#e9c176] tracking-widest font-bold">✨ DEPILAÇÃO &amp; ESTÉTICA FEMININA</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-buco-cera" data-name="Buço na Cera" data-price="20">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Buço na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação de buço com cera morna.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 20</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-narinas-cera" data-name="Narinas na Cera" data-price="20">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Narinas na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Limpeza e depilação nasal interna na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 20</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-orelhas-cera" data-name="Orelhas na Cera" data-price="20">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Orelhas na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação do pavilhão auricular na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 20</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="rosto-fio" data-name="Rosto Completo (Fio Egípcio)" data-price="55">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Rosto Completo (Fio Egípcio)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação facial detalhada na linha egípcia.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 55</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="rosto-cera-simples" data-name="Rosto Completo (Cera Simples)" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Rosto Completo (Cera Simples)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação facial expressa com cera suave.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="rosto-areas-fio" data-name="Rosto Áreas Individuais (Fio)" data-price="25">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Rosto Áreas Individuais (Fio)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Testa, bochechas ou queixo na linha egípcia.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 25</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="rosto-areas-cera" data-name="Rosto Áreas Individuais (Cera)" data-price="20">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Rosto Áreas Individuais (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação de regiões específicas do rosto na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 20</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-axila-cera" data-name="Axila na Cera" data-price="30">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Axila na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação de axila com cera morna higiênica.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 30</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-virilha-simples-cera" data-name="Virilha Simples na Cera" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Virilha Simples na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Remoção de contorno básico da virilha.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-virilha-cavada-cera" data-name="Virilha Cavada na Cera" data-price="55">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Virilha Cavada na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação cavada avançada com cera de luxo.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 55</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-virilha-intima-cera" data-name="Virilha Completa/Íntima (Cera)" data-price="75">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Virilha Completa/Íntima (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação íntima feminina completa na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 75</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-meia-perna-cera" data-name="Meia Perna na Cera" data-price="45">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Meia Perna na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação da panturrilha até o joelho.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 45</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-perna-inteira-cera" data-name="Perna Inteira na Cera" data-price="80">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Perna Inteira na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação completa das coxas até os pés.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 80</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-braco-cera" data-name="Braço na Cera" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Braço na Cera</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação completa dos braços com cera suave.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="laser-axilas" data-name="Depilação a Laser - Axilas" data-price="90">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação a Laser - Axilas</p>
+                                                <p class="text-[10px] text-on-surface-variant">Sessão individual com laser de diodo avançado.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 90</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="laser-virilha" data-name="Depilação a Laser - Virilha" data-price="150">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação a Laser - Virilha</p>
+                                                <p class="text-[10px] text-on-surface-variant">Sessão individual de virilha completa a laser.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 150</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="laser-buco" data-name="Depilação a Laser - Buço" data-price="50">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação a Laser - Buço</p>
+                                                <p class="text-[10px] text-on-surface-variant">Sessão individual de buço facial a laser.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 50</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="laser-perna" data-name="Depilação a Laser - Perna Inteira" data-price="250">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação a Laser - Perna Inteira</p>
+                                                <p class="text-[10px] text-on-surface-variant">Sessão individual de pernas inteiras a laser.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 250</span>
+                                    </label>
+                                </div>
+
+                                <!-- Categoria: Serviços & Depilação Masculina -->
+                                <div class="sticky top-0 bg-[#131313] py-2 z-10 border-b border-[#e9c176]/20 mb-2 mt-4">
+                                    <span class="text-[10px] font-label-caps text-[#e9c176] tracking-widest font-bold">🧔 SERVIÇOS &amp; DEPILAÇÃO MASCULINA</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="corte-masculino" data-name="Corte Masculino" data-price="50">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Corte Masculino</p>
+                                                <p class="text-[10px] text-on-surface-variant">Design de corte masculino personalizado.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 50</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="barba-masculina" data-name="Barba Masculina" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Barba Masculina</p>
+                                                <p class="text-[10px] text-on-surface-variant">Cuidado de barba com toalha quente e navalha.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-axila" data-name="Depilação Masculina - Axila (Cera)" data-price="40">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Axila (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação de axila masculina na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 40</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-peito" data-name="Depilação Masculina - Peito (Cera)" data-price="60">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Peito (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação do tórax masculino na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 60</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-costas" data-name="Depilação Masculina - Costas (Cera)" data-price="60">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Costas (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação das costas masculina na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 60</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-abdomen" data-name="Depilação Masculina - Abdômen (Cera)" data-price="50">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Abdômen (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação do abdômen masculino na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 50</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-intima" data-name="Depilação Masculina - Íntima (Cera)" data-price="120">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Íntima (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação íntima masculina completa na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 120</span>
+                                    </label>
+                                    <label class="dashboard-service-item flex items-center justify-between p-3 bg-[#1f1f1f] border border-white/5 rounded-lg cursor-pointer hover:border-[#e9c176]/30 transition-all">
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" class="service-checkbox w-4 h-4 accent-[#e9c176]" data-id="depilacao-masc-perna" data-name="Depilação Masculina - Perna (Cera)" data-price="100">
+                                            <div>
+                                                <p class="font-bold text-white text-xs">Depilação Masculina - Perna (Cera)</p>
+                                                <p class="text-[10px] text-on-surface-variant">Depilação de pernas masculinas completas na cera.</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-bold text-[#e9c176] text-xs">R$ 100</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -1192,6 +1909,35 @@
               .to('[data-parallax-layer="4"]', { yPercent: 5, ease: "none" }, 0);
         }
 
+        // Zoom Parallax for About Section
+        const zoomParallaxTrigger = document.querySelector('#about');
+        if (zoomParallaxTrigger) {
+            const zoomTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: zoomParallaxTrigger,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+
+            // Animate scale of each image container
+            const imageContainers = zoomParallaxTrigger.querySelectorAll('.zoom-image-container');
+            imageContainers.forEach(container => {
+                const maxScale = parseFloat(container.getAttribute('data-scale-max'));
+                zoomTl.to(container, {
+                    scale: maxScale,
+                    ease: "none"
+                }, 0);
+            });
+
+            // Animate fade-in of text overlay at the end of the zoom (last 35% of scroll)
+            zoomTl.to('#essence-text-overlay', {
+                autoAlpha: 1,
+                ease: "power2.out"
+            }, 0.65);
+        }
+
         // Scroll Progress Bar Update
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1235,10 +1981,10 @@
             for (let i = 0; i < 180; i++) {
                 confettiPieces.push({
                     x: -canvas.width * 0.2 + Math.random() * canvas.width * 1.4,
-                    y: -Math.random() * canvas.height * 0.3,
-                    z: Math.random() * 1500 + 800, // Start further back
+                    y: Math.random() * canvas.height * 1.3 - canvas.height * 0.3, // Distribute across and above screen on load
+                    z: Math.random() * 800 + 200, // Start closer to focal plane for larger/more vibrant pieces
                     velocityX: (Math.random() - 0.5) * 0.6,
-                    velocityY: Math.random() * 0.3 + 0.1,
+                    velocityY: Math.random() * 0.25 + 0.15, // Extra gentle initial fall speed
                     velocityZ: -(Math.random() * 0.6 + 0.3),
                     rotation: Math.random() * Math.PI * 2,
                     rotationSpeed: (Math.random() - 0.5) * 0.04,
@@ -1344,7 +2090,7 @@
                     piece.velocityX *= 0.999;
                     piece.velocityY *= 0.999;
                     
-                    piece.velocityY += 0.0005;
+                    piece.velocityY += 0.0008; // Very slow gravity acceleration for a floating drift
                     piece.velocityZ *= 1.0005;
 
                     if (!piece.isFading && (piece.z <= 200 || piece.x < -150 || piece.x > canvas.width + 150 || piece.y > canvas.height + 150)) {
@@ -1359,9 +2105,193 @@
                     if (piece.opacity <= 0) {
                         piece.x = -canvas.width * 0.2 + Math.random() * canvas.width * 1.4;
                         piece.y = -Math.random() * canvas.height * 0.3;
-                        piece.z = Math.random() * 800 + 1200;
+                        piece.z = Math.random() * 800 + 200; // Recycle closer to focal plane
                         piece.velocityX = (Math.random() - 0.5) * 0.6;
-                        piece.velocityY = Math.random() * 0.3 + 0.1;
+                        piece.velocityY = Math.random() * 0.25 + 0.15; // Extra gentle fall speed on recycle
+                        piece.velocityZ = -(Math.random() * 0.6 + 0.3);
+                        piece.floatPhase = Math.random() * Math.PI * 2;
+                        piece.opacity = 1;
+                        piece.isFading = false;
+                        piece.fadeStart = 0;
+                    }
+                });
+            };
+
+            let animationId;
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                updateConfetti();
+                confettiPieces.forEach(drawConfetti);
+                animationId = requestAnimationFrame(animate);
+            };
+
+            animate();
+
+            // Handle clean up on resize removal
+            return () => {
+                window.removeEventListener('resize', resizeCanvas);
+                if (animationId) cancelAnimationFrame(animationId);
+            };
+        };
+
+        // Confetti Canvas Animation for Parallax Section (Gold Confetti rising from bottom to top)
+        const initParallaxConfetti = () => {
+            const canvas = document.getElementById('parallax-confetti-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const resizeCanvas = () => {
+                canvas.width = canvas.parentElement.clientWidth || window.innerWidth;
+                canvas.height = canvas.parentElement.clientHeight || window.innerHeight;
+            };
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const goldColors = [
+                'rgba(233, 193, 118, 0.9)', // Primary gold (#e9c176)
+                'rgba(255, 222, 165, 0.8)', // Primary fixed (#ffdea5)
+                'rgba(197, 160, 89, 0.9)',  // Primary container (#c5a059)
+                'rgba(243, 156, 18, 0.7)',   // Warm amber gold
+                'rgba(212, 175, 55, 0.85)',  // Rich metallic gold
+                'rgba(240, 224, 200, 0.6)'   // Champagne light gold
+            ];
+
+            const confettiPieces = [];
+
+            // Initialize 150 confetti pieces with 3D properties rising from bottom
+            for (let i = 0; i < 150; i++) {
+                confettiPieces.push({
+                    x: -canvas.width * 0.2 + Math.random() * canvas.width * 1.4,
+                    y: canvas.height + Math.random() * canvas.height * 1.3, // Distribute below screen on load
+                    z: Math.random() * 800 + 200,
+                    velocityX: (Math.random() - 0.5) * 0.6,
+                    velocityY: -(Math.random() * 0.25 + 0.15), // Gentle initial rise speed (negative)
+                    velocityZ: -(Math.random() * 0.6 + 0.3),
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.04,
+                    baseSize: Math.random() * 12 + 6,
+                    opacity: 1,
+                    shape: ['rectangle', 'circle', 'star', 'diamond'][Math.floor(Math.random() * 4)],
+                    color: goldColors[Math.floor(Math.random() * goldColors.length)],
+                    floatPhase: Math.random() * Math.PI * 2,
+                    swayAmplitude: Math.random() * 0.5 + 0.2,
+                    bobAmplitude: Math.random() * 0.3 + 0.1,
+                    fadeStart: 0,
+                    isFading: false
+                });
+            }
+
+            const drawConfetti = (piece) => {
+                const perspective = 800;
+                const scale = perspective / (perspective + piece.z);
+                const projectedX = piece.x + (piece.x - canvas.width / 2) * (1 - scale);
+                const projectedY = piece.y + (piece.y - canvas.height / 2) * (1 - scale);
+                
+                if (scale <= 0.01 || scale > 2) return;
+                
+                const size = piece.baseSize * scale;
+                const opacity = Math.min(piece.opacity * scale * 1.5, 1);
+                
+                ctx.save();
+                ctx.translate(projectedX, projectedY);
+                ctx.rotate(piece.rotation);
+                ctx.globalAlpha = opacity;
+                
+                const shadowIntensity = Math.min(scale * 0.3, 0.2);
+                ctx.shadowColor = `rgba(0, 0, 0, ${shadowIntensity})`;
+                ctx.shadowBlur = scale * 4;
+                ctx.shadowOffsetX = scale * 3;
+                ctx.shadowOffsetY = scale * 3;
+
+                ctx.fillStyle = piece.color;
+
+                switch (piece.shape) {
+                    case 'rectangle':
+                        const width = size * 1.5;
+                        const height = size * 0.8;
+                        ctx.fillRect(-width / 2, -height / 2, width, height);
+                        break;
+                    case 'circle':
+                        ctx.beginPath();
+                        ctx.arc(0, 0, size * 0.6, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 'star':
+                        ctx.beginPath();
+                        const starSize = size * 0.7;
+                        for (let i = 0; i < 6; i++) {
+                            const angle = (i * Math.PI) / 3;
+                            const x = Math.cos(angle) * starSize;
+                            const y = Math.sin(angle) * starSize;
+                            if (i === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                            
+                            const innerAngle = ((i + 0.5) * Math.PI) / 3;
+                            const innerX = Math.cos(innerAngle) * starSize * 0.5;
+                            const innerY = Math.sin(innerAngle) * starSize * 0.5;
+                            ctx.lineTo(innerX, innerY);
+                        }
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    case 'diamond':
+                        ctx.beginPath();
+                        const diamondSize = size * 0.8;
+                        ctx.moveTo(0, -diamondSize);
+                        ctx.lineTo(diamondSize * 0.6, 0);
+                        ctx.lineTo(0, diamondSize);
+                        ctx.lineTo(-diamondSize * 0.6, 0);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                }
+
+                ctx.restore();
+            };
+
+            const updateConfetti = () => {
+                confettiPieces.forEach((piece) => {
+                    piece.floatPhase += 0.02;
+                    
+                    const swayX = Math.sin(piece.floatPhase) * piece.swayAmplitude * 0.3;
+                    const bobY = Math.cos(piece.floatPhase * 0.7) * piece.bobAmplitude * 0.2;
+                    
+                    piece.x += piece.velocityX + swayX;
+                    piece.y += piece.velocityY + bobY;
+                    piece.z += piece.velocityZ;
+                    piece.rotation += piece.rotationSpeed;
+
+                    const turbulence = Math.max(0, 1 - piece.z / 1500) * 0.08;
+                    piece.velocityX += (Math.random() - 0.5) * turbulence * 0.5;
+                    piece.velocityY += (Math.random() - 0.5) * turbulence * 0.5;
+                    
+                    piece.velocityX += (Math.random() - 0.5) * 0.005;
+                    piece.velocityY += (Math.random() - 0.5) * 0.005;
+                    
+                    piece.velocityX *= 0.999;
+                    piece.velocityY *= 0.999;
+                    
+                    piece.velocityY -= 0.0008; // Gentle upward drift acceleration
+                    piece.velocityZ *= 1.0005;
+
+                    if (!piece.isFading && (piece.z <= 200 || piece.x < -150 || piece.x > canvas.width + 150 || piece.y < -150)) {
+                        piece.isFading = true;
+                        piece.fadeStart = piece.opacity;
+                    }
+                    
+                    if (piece.isFading) {
+                        piece.opacity -= 0.02;
+                    }
+
+                    if (piece.opacity <= 0) {
+                        piece.x = -canvas.width * 0.2 + Math.random() * canvas.width * 1.4;
+                        piece.y = canvas.height + Math.random() * canvas.height * 0.3; // Recycle at the bottom
+                        piece.z = Math.random() * 800 + 200;
+                        piece.velocityX = (Math.random() - 0.5) * 0.6;
+                        piece.velocityY = -(Math.random() * 0.25 + 0.15); // Gentle upward drift speed on recycle
                         piece.velocityZ = -(Math.random() * 0.6 + 0.3);
                         piece.floatPhase = Math.random() * Math.PI * 2;
                         piece.opacity = 1;
@@ -1436,6 +2366,7 @@
 
             // Start the gold confetti canvas animation
             initConfettiCanvas();
+            initParallaxConfetti();
             // Scroll Reveal Animation (Intersection Observer)
             const revealElements = document.querySelectorAll('.scroll-reveal');
             const observer = new IntersectionObserver((entries, obs) => {
@@ -1640,11 +2571,48 @@
                 });
             });
 
+            const sendGeneralBookingToWhatsApp = () => {
+                const msg = `Olá, Tradicionale! Gostaria de agendar um horário de atendimento.`;
+                const encodedMsg = encodeURIComponent(msg);
+                window.open(`https://wa.me/5541951973097?text=${encodedMsg}`, '_blank');
+            };
+
+            const sendComboToWhatsApp = () => {
+                const selected = [];
+                serviceCheckboxes.forEach(cb => {
+                    if (cb.checked) {
+                        selected.push(cb.getAttribute('data-name'));
+                    }
+                });
+
+                let msg = `Olá, Tradicionale! Gostaria de agendar um horário para os seguintes serviços do meu combo:\n\n`;
+                if (selected.length > 0) {
+                    selected.forEach(s => {
+                        msg += `- ${s}\n`;
+                    });
+                    msg += `\n`;
+                    
+                    let subtotal = 0;
+                    serviceCheckboxes.forEach(cb => {
+                        if (cb.checked) subtotal += parseFloat(cb.getAttribute('data-price'));
+                    });
+                    const discPercent = selected.length === 2 ? 10 : (selected.length >= 3 ? 15 : 0);
+                    const final = subtotal * (1 - discPercent / 100);
+                    msg += `💰 *Valor Estimado com Desconto*: R$ ${final.toFixed(2).replace('.', ',')}\n`;
+                    if (discPercent > 0) {
+                        msg += `✨ *Desconto Aplicado*: ${discPercent}%\n`;
+                    }
+                } else {
+                    msg = `Olá, Tradicionale! Gostaria de agendar um horário de atendimento.`;
+                }
+
+                const encodedMsg = encodeURIComponent(msg);
+                window.open(`https://wa.me/5541951973097?text=${encodedMsg}`, '_blank');
+            };
+
             const mobileSummaryBtn = document.getElementById('mobile-summary-btn');
             if (mobileSummaryBtn) {
-                mobileSummaryBtn.addEventListener('click', () => {
-                    activateTab('tab-booking');
-                });
+                mobileSummaryBtn.addEventListener('click', sendComboToWhatsApp);
             }
 
             // Bind Landing Page Buttons to Modal Actions
@@ -1657,16 +2625,16 @@
             const bookingAgendarBtn = document.getElementById('booking-agendar-btn');
             const saberMaisBtns = document.querySelectorAll('.saber-mais-btn');
 
-            if (bookBtnDesktop) bookBtnDesktop.addEventListener('click', () => openDashboard('tab-booking'));
-            if (bookBtnMobile) bookBtnMobile.addEventListener('click', () => openDashboard('tab-booking'));
-            if (bookBtnDrawer) bookBtnDrawer.addEventListener('click', () => openDashboard('tab-booking'));
-            if (bookingAgendarBtn) bookingAgendarBtn.addEventListener('click', () => openDashboard('tab-booking'));
+            if (bookBtnDesktop) bookBtnDesktop.addEventListener('click', sendGeneralBookingToWhatsApp);
+            if (bookBtnMobile) bookBtnMobile.addEventListener('click', sendGeneralBookingToWhatsApp);
+            if (bookBtnDrawer) bookBtnDrawer.addEventListener('click', sendGeneralBookingToWhatsApp);
+            if (bookingAgendarBtn) bookingAgendarBtn.addEventListener('click', sendGeneralBookingToWhatsApp);
             
-            if (heroAgendarBtn) heroAgendarBtn.addEventListener('click', () => openDashboard('tab-services'));
+            if (heroAgendarBtn) heroAgendarBtn.addEventListener('click', sendGeneralBookingToWhatsApp);
             
             if (heroDescubraBtn) {
                 heroDescubraBtn.addEventListener('click', () => {
-                    const aboutSection = document.getElementById('about');
+                    const aboutSection = document.getElementById('about-us');
                     if (aboutSection) lenis.scrollTo(aboutSection, { offset: -80 });
                 });
             }
@@ -1811,9 +2779,7 @@
                 cb.addEventListener('change', updateComboCalculator);
             });
 
-            comboNextBtn.addEventListener('click', () => {
-                activateTab('tab-booking');
-            });
+            comboNextBtn.addEventListener('click', sendComboToWhatsApp);
 
             // Booking Form Submission & WhatsApp Redirect
             const bookingForm2 = document.getElementById('dashboard-booking-form');
@@ -1868,7 +2834,7 @@
                     }
 
                     const encodedMsg = encodeURIComponent(msg);
-                    window.open(`https://wa.me/5511951973097?text=${encodedMsg}`, '_blank');
+                    window.open(`https://wa.me/5541951973097?text=${encodedMsg}`, '_blank');
                 });
             }
 
@@ -1931,20 +2897,35 @@
                         let price = '';
 
                         if (id === 'service-hair-styling') {
-                            name = 'Hair Styling & Cut';
-                            serviceId = 'hair-cut';
-                            desc = 'Cortes e colorações personalizadas.';
-                            price = '180';
-                        } else if (id === 'service-skin-care') {
-                            name = 'Skin Care';
-                            serviceId = 'facial';
-                            desc = 'Revitalização avançada da pele.';
-                            price = '220';
+                            name = 'Corte Feminino';
+                            serviceId = 'corte-feminino';
+                            desc = 'Design e estilização profissional.';
+                            price = '80';
+                        } else if (id === 'service-highlights') {
+                            name = 'Mechas & Coloração';
+                            serviceId = 'mechas-medios';
+                            desc = 'Iluminação personalizada e balayage.';
+                            price = '550';
                         } else if (id === 'service-makeup-artistry') {
                             name = 'Makeup Artistry';
                             serviceId = 'makeup';
                             desc = 'Maquiagem social e editorial.';
-                            price = '300';
+                            price = '165';
+                        } else if (id === 'service-nails') {
+                            name = 'Unhas em Gel';
+                            serviceId = 'alongamento-gel';
+                            desc = 'Alongamento gel, blindagem e manicure.';
+                            price = '150';
+                        } else if (id === 'service-eyebrows') {
+                            name = 'Sobrancelhas & Cílios';
+                            serviceId = 'design-premium';
+                            desc = 'Design visagista, henna e micropigmentação.';
+                            price = '75';
+                        } else if (id === 'service-laser') {
+                            name = 'Depilação a Laser';
+                            serviceId = 'laser-axilas';
+                            desc = 'Depilação corporal a cera ou a laser.';
+                            price = '90';
                         }
 
                         card.innerHTML = `
@@ -2155,6 +3136,7 @@
                     }
                 });
             }
+
         });
     </script>
 </body>
