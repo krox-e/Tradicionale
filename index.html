@@ -1931,11 +1931,12 @@
                 }, 0);
             });
 
-            // Animate fade-in of text overlay at the end of the zoom (last 35% of scroll)
+            // Animate fade-in of text overlay (starts at 40% of scroll and fades in quickly)
             zoomTl.to('#essence-text-overlay', {
                 autoAlpha: 1,
-                ease: "power2.out"
-            }, 0.65);
+                ease: "power2.out",
+                duration: 0.4
+            }, 0.4);
         }
 
         // Scroll Progress Bar Update
